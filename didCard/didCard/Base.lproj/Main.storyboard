@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="1043" y="455"/>
         </scene>
-        <!--View Controller-->
+        <!--New Account View Controller-->
         <scene sceneID="7NP-MD-9mk">
             <objects>
-                <viewController id="lAQ-Ho-nwb" sceneMemberID="viewController">
+                <viewController id="lAQ-Ho-nwb" customClass="NewAccountViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KbZ-Xu-Fzh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +129,7 @@
         <!--导入身份证-->
         <scene sceneID="72n-Y8-497">
             <objects>
-                <viewController id="Ruk-si-cpI" sceneMemberID="viewController">
+                <viewController id="Ruk-si-cpI" customClass="ImportViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyj-EE-L0E" customClass="QRScannerController">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="1250.7246376811595" y="-1074.1071428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="vs7-WL-2z2">
             <objects>
-                <viewController id="4XI-Q6-BRy" sceneMemberID="viewController">
+                <viewController id="4XI-Q6-BRy" customClass="CreateAccountViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTr-Xa-Ghy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,6 +218,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示： 本身份为区块链身份系统，创建时无网络无需验证，无密码找回功能" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aE-BP-CZc">
+                                <rect key="frame" x="18" y="634" width="377" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="xdg-eo-gVi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.49019607843137253" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55c-sS-TO8">
                                 <rect key="frame" x="18" y="374" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -234,18 +243,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="1II-G9-PgB" kind="show" id="EXE-wL-OVW"/>
+                                    <action selector="CreateAccount:" destination="4XI-Q6-BRy" eventType="touchUpInside" id="MCB-Yj-jKY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示： 本身份为区块链身份系统，创建时无网络无需验证，无密码找回功能" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aE-BP-CZc">
-                                <rect key="frame" x="18" y="634" width="377" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="xdg-eo-gVi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.49019607843137253" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="29F-Vm-Gz3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -263,6 +263,7 @@
                             <constraint firstItem="Skr-AH-ean" firstAttribute="leading" secondItem="29F-Vm-Gz3" secondAttribute="leading" constant="18" id="o38-Ku-kAb"/>
                             <constraint firstItem="55c-sS-TO8" firstAttribute="leading" secondItem="29F-Vm-Gz3" secondAttribute="leading" constant="18" id="ow9-UR-zTT"/>
                             <constraint firstItem="z4e-Er-KZj" firstAttribute="leading" secondItem="29F-Vm-Gz3" secondAttribute="leading" constant="18" id="sfT-Un-2SV"/>
+                            <constraint firstItem="29F-Vm-Gz3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Skr-AH-ean" secondAttribute="trailing" symbolic="YES" id="uOP-Dr-zpN"/>
                             <constraint firstItem="2aE-BP-CZc" firstAttribute="leading" secondItem="29F-Vm-Gz3" secondAttribute="leading" constant="18" id="uoe-KH-cS4"/>
                             <constraint firstItem="29F-Vm-Gz3" firstAttribute="trailing" secondItem="2aE-BP-CZc" secondAttribute="trailing" constant="19" id="wHu-DD-pLT"/>
                             <constraint firstItem="z4e-Er-KZj" firstAttribute="top" secondItem="Skr-AH-ean" secondAttribute="bottom" constant="16" id="yh7-E7-fIm"/>
@@ -270,15 +271,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tZc-Kn-XRW"/>
+                    <connections>
+                        <outlet property="PassWrod1FD" destination="z4e-Er-KZj" id="6hS-Zs-Urd"/>
+                        <outlet property="PassWrod2FD" destination="9YF-oc-pdl" id="UV6-wq-I2f"/>
+                        <segue destination="1II-G9-PgB" kind="show" identifier="CreateSuccessSeg" id="Weg-f5-cHC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rju-Od-bep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1250.7246376811595" y="-1731.0267857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Back Up View Controller-->
         <scene sceneID="g2P-sx-y7O">
             <objects>
-                <viewController id="1II-G9-PgB" sceneMemberID="viewController">
+                <viewController id="1II-G9-PgB" customClass="BackUpViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zdY-V9-0aP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
