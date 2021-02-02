@@ -63,7 +63,8 @@ playground.xcworkspace
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
-
+didCard/didCard/Carthage/
+didCard/didCard/Cartfile.resolved
 Carthage/Build/
 
 # Accio dependency management
