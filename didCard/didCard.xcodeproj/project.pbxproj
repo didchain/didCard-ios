@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081ACE9125C7EBDE00C23B3C /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACE9025C7EBDE00C23B3C /* QRScannerController.swift */; };
 		69711D7525B7F47200B83E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7425B7F47200B83E6C /* AppDelegate.swift */; };
 		69711D7725B7F47200B83E6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7625B7F47200B83E6C /* SceneDelegate.swift */; };
 		69711D7925B7F47200B83E6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7825B7F47200B83E6C /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		081ACE9025C7EBDE00C23B3C /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 		69711D7125B7F47200B83E6C /* didCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = didCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69711D7425B7F47200B83E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69711D7625B7F47200B83E6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				69711D7425B7F47200B83E6C /* AppDelegate.swift */,
 				69711D7625B7F47200B83E6C /* SceneDelegate.swift */,
+				081ACE9025C7EBDE00C23B3C /* QRScannerController.swift */,
 				69711D7825B7F47200B83E6C /* ViewController.swift */,
 				69711D7A25B7F47200B83E6C /* Main.storyboard */,
 				69711D8025B7F47500B83E6C /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			files = (
 				69711D7925B7F47200B83E6C /* ViewController.swift in Sources */,
 				69711D7525B7F47200B83E6C /* AppDelegate.swift in Sources */,
+				081ACE9125C7EBDE00C23B3C /* QRScannerController.swift in Sources */,
 				69711D7725B7F47200B83E6C /* SceneDelegate.swift in Sources */,
 				69711D7F25B7F47200B83E6C /* didCard.xcdatamodeld in Sources */,
 			);
