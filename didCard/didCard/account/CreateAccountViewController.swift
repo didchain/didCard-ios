@@ -9,10 +9,10 @@ import UIKit
 
 class CreateAccountViewController: UIViewController {
 
-        @IBOutlet weak var PassWrod2FD: UITextField!
-        @IBOutlet weak var PassWrod1FD: UITextField!
-        override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet weak var PassWrod2FD: UITextField!
+    @IBOutlet weak var PassWrod1FD: UITextField!
+    override func viewDidLoad() {
+    super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
@@ -28,14 +28,19 @@ class CreateAccountViewController: UIViewController {
     }
     */
 
-        @IBAction func CreateAccount(_ sender: UIButton) {
-                
-                //TODO::
-                //lib create account
-                //result
-                
-                self.performSegue(withIdentifier: "CreateSuccessSeg", sender: self)
+    @IBAction func CreateAccount(_ sender: UIButton) {
+            
+        //TODO::
+        //lib create account
+        //result
+        
+        if PassWrod1FD.text != PassWrod2FD.text {
+            print("两次输入密码不同")
+            return
         }
+        
+        self.performSegue(withIdentifier: "CreateSuccessSeg", sender: self)
+    }
         
         
 }

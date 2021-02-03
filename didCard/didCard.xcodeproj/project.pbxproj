@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		081ACE9125C7EBDE00C23B3C /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACE9025C7EBDE00C23B3C /* QRScannerController.swift */; };
+		081ACEA525CA2FAC00C23B3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		081ACE9025C7EBDE00C23B3C /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
+		081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		69694E1225C9124600309185 /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1625C9127400309185 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1925C912A200309185 /* BackUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +51,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		081ACE9D25CA2D2E00C23B3C /* home */ = {
+			isa = PBXGroup;
+			children = (
+				081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		081ACE9E25CA2D5600C23B3C /* personal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = personal;
+			sourceTree = "<group>";
+		};
 		69694E1125C9120B00309185 /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,10 +97,11 @@
 		69711D7325B7F47200B83E6C /* didCard */ = {
 			isa = PBXGroup;
 			children = (
+				081ACE9E25CA2D5600C23B3C /* personal */,
+				081ACE9D25CA2D2E00C23B3C /* home */,
 				69694E1125C9120B00309185 /* account */,
 				69711D7425B7F47200B83E6C /* AppDelegate.swift */,
 				69711D7625B7F47200B83E6C /* SceneDelegate.swift */,
-				081ACE9025C7EBDE00C23B3C /* QRScannerController.swift */,
 				69711D7825B7F47200B83E6C /* ViewController.swift */,
 				69711D7A25B7F47200B83E6C /* Main.storyboard */,
 				69711D8025B7F47500B83E6C /* Assets.xcassets */,
@@ -172,7 +188,7 @@
 				69711D7925B7F47200B83E6C /* ViewController.swift in Sources */,
 				69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */,
 				69711D7525B7F47200B83E6C /* AppDelegate.swift in Sources */,
-				081ACE9125C7EBDE00C23B3C /* QRScannerController.swift in Sources */,
+				081ACEA525CA2FAC00C23B3C /* HomeViewController.swift in Sources */,
 				69711D7725B7F47200B83E6C /* SceneDelegate.swift in Sources */,
 				69711D7F25B7F47200B83E6C /* didCard.xcdatamodeld in Sources */,
 				69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */,
