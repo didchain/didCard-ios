@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var AddressBarItem: UIBarButtonItem!
     @IBOutlet weak var IDCardView: UIView!
     @IBOutlet weak var ServiceView: UIView!
+    @IBOutlet weak var QRCodeView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +23,13 @@ class HomeViewController: UIViewController {
         button.setImage(UIImage(named:"address_icon"), for: .normal)
         button.setTitle("北京", for: .normal)
         AddressBarItem.customView = button
+        
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = item
+        
+        QRCodeView.layer.borderColor = UIColor.init(red: 12/255, green: 18/255, blue: 61/155, alpha: 1).cgColor
+
+//            UIColor(red: 245, green: 201, blue: 92, alpha: 1).cgColor
         
 //        self.IDCardView.dropShadow()
 //        self.ServiceView.dropShadow()
