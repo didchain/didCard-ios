@@ -17,7 +17,6 @@
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
 		69694E1D25C912BC00309185 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1C25C912BC00309185 /* ImportViewController.swift */; };
 		69711D7525B7F47200B83E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7425B7F47200B83E6C /* AppDelegate.swift */; };
-		69711D7725B7F47200B83E6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7625B7F47200B83E6C /* SceneDelegate.swift */; };
 		69711D7925B7F47200B83E6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7825B7F47200B83E6C /* ViewController.swift */; };
 		69711D7C25B7F47200B83E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69711D7A25B7F47200B83E6C /* Main.storyboard */; };
 		69711D7F25B7F47200B83E6C /* didCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69711D7D25B7F47200B83E6C /* didCard.xcdatamodeld */; };
@@ -38,7 +37,6 @@
 		69694E1C25C912BC00309185 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		69711D7125B7F47200B83E6C /* didCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = didCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69711D7425B7F47200B83E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		69711D7625B7F47200B83E6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		69711D7825B7F47200B83E6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		69711D7B25B7F47200B83E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69711D7E25B7F47200B83E6C /* didCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = didCard.xcdatamodel; sourceTree = "<group>"; };
@@ -46,6 +44,7 @@
 		69711D8325B7F47500B83E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69711D8525B7F47500B83E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69711D8C25B7F4C700B83E6C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = didCard/Cartfile; sourceTree = "<group>"; };
+		69EB0D4725CCF9910033B373 /* iosLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iosLib.framework; path = didCard/bin/iosLib.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +94,7 @@
 				69711D8C25B7F4C700B83E6C /* Cartfile */,
 				69711D7325B7F47200B83E6C /* didCard */,
 				69711D7225B7F47200B83E6C /* Products */,
+				69EB0D4625CCF9910033B373 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,7 +113,6 @@
 				081ACE9D25CA2D2E00C23B3C /* home */,
 				69694E1125C9120B00309185 /* account */,
 				69711D7425B7F47200B83E6C /* AppDelegate.swift */,
-				69711D7625B7F47200B83E6C /* SceneDelegate.swift */,
 				69711D7825B7F47200B83E6C /* ViewController.swift */,
 				69711D7A25B7F47200B83E6C /* Main.storyboard */,
 				69711D8025B7F47500B83E6C /* Assets.xcassets */,
@@ -122,6 +121,14 @@
 				69711D7D25B7F47200B83E6C /* didCard.xcdatamodeld */,
 			);
 			path = didCard;
+			sourceTree = "<group>";
+		};
+		69EB0D4625CCF9910033B373 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69EB0D4725CCF9910033B373 /* iosLib.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +210,6 @@
 				081ACEAE25CB818400C23B3C /* QRCodeViewController.swift in Sources */,
 				69711D7525B7F47200B83E6C /* AppDelegate.swift in Sources */,
 				081ACEA525CA2FAC00C23B3C /* HomeViewController.swift in Sources */,
-				69711D7725B7F47200B83E6C /* SceneDelegate.swift in Sources */,
 				081ACEB925CBE30A00C23B3C /* IdentityManagementViewController.swift in Sources */,
 				69711D7F25B7F47200B83E6C /* didCard.xcdatamodeld in Sources */,
 				69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */,
@@ -357,8 +363,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/didCard/bin",
+				);
 				INFOPLIST_FILE = didCard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,8 +389,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/didCard/bin",
+				);
 				INFOPLIST_FILE = didCard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
