@@ -12,6 +12,8 @@
 		081ACEB125CB881700C23B3C /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEB025CB881700C23B3C /* PersonalViewController.swift */; };
 		081ACEB625CBE28300C23B3C /* CreateNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEB525CBE28300C23B3C /* CreateNewCardViewController.swift */; };
 		081ACEB925CBE30A00C23B3C /* IdentityManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEB825CBE30A00C23B3C /* IdentityManagementViewController.swift */; };
+		081ACEC225D1151E00C23B3C /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEC125D1151E00C23B3C /* Wallet.swift */; };
+		081ACEC625D1157B00C23B3C /* DIDBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEC425D1157B00C23B3C /* DIDBase.xcdatamodeld */; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
@@ -31,6 +33,8 @@
 		081ACEB025CB881700C23B3C /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		081ACEB525CBE28300C23B3C /* CreateNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewCardViewController.swift; sourceTree = "<group>"; };
 		081ACEB825CBE30A00C23B3C /* IdentityManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityManagementViewController.swift; sourceTree = "<group>"; };
+		081ACEC125D1151E00C23B3C /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		081ACEC525D1157B00C23B3C /* DIDBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DIDBase.xcdatamodel; sourceTree = "<group>"; };
 		69694E1225C9124600309185 /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1625C9127400309185 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1925C912A200309185 /* BackUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 			path = personal;
 			sourceTree = "<group>";
 		};
+		081ACEC825D115C900C23B3C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				081ACEC425D1157B00C23B3C /* DIDBase.xcdatamodeld */,
+				081ACEC125D1151E00C23B3C /* Wallet.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		69694E1125C9120B00309185 /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 		69711D7325B7F47200B83E6C /* didCard */ = {
 			isa = PBXGroup;
 			children = (
+				081ACEC825D115C900C23B3C /* utils */,
 				081ACE9E25CA2D5600C23B3C /* personal */,
 				081ACE9D25CA2D2E00C23B3C /* home */,
 				69694E1125C9120B00309185 /* account */,
@@ -202,6 +216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				081ACEC625D1157B00C23B3C /* DIDBase.xcdatamodeld in Sources */,
+				081ACEC225D1151E00C23B3C /* Wallet.swift in Sources */,
 				69694E1D25C912BC00309185 /* ImportViewController.swift in Sources */,
 				081ACEB625CBE28300C23B3C /* CreateNewCardViewController.swift in Sources */,
 				69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */,
@@ -431,6 +447,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		081ACEC425D1157B00C23B3C /* DIDBase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				081ACEC525D1157B00C23B3C /* DIDBase.xcdatamodel */,
+			);
+			currentVersion = 081ACEC525D1157B00C23B3C /* DIDBase.xcdatamodel */;
+			path = DIDBase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		69711D7D25B7F47200B83E6C /* didCard.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

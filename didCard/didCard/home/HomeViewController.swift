@@ -8,37 +8,23 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
-//    @IBOutlet weak var AddressBarItem: UIBarButtonItem!
     @IBOutlet weak var HomeBackground: UIView!
     @IBOutlet weak var IDCardView: UIView!
-//    @IBOutlet weak var ServiceView: UIView!
-//    @IBOutlet weak var QRCodeView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        let button =   UIButton(type: .system)
-        button.frame = CGRect(x:0, y:0, width:65, height:30)
-        button.setImage(UIImage(named:"address_icon"), for: .normal)
-        button.setTitle("北京", for: .normal)
-//        AddressBarItem.customView = button
         
         let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = item
-//
-//        QRCodeView.layer.borderColor = UIColor.init(red: 12/255, green: 18/255, blue: 61/155, alpha: 1).cgColor
-        
-        HomeBackground.layer.addSublayer(setGradualChangColor(frame: HomeBackground.bounds))
+
+        HomeBackground.layer.insertSublayer(setGradualChangColor(frame: HomeBackground.bounds), at: 0)
         HomeBackground.layer.mask = configRectCorner(view: HomeBackground, corner: [.bottomLeft, .bottomRight] , radii: CGSize(width: 100, height: 100))
         
         IDCardView.layer.contents = UIImage(named: "bg")?.cgImage
-//            UIColor(red: 245, green: 201, blue: 92, alpha: 1).cgColor
         
-//        self.IDCardView.dropShadow()
-//        self.ServiceView.dropShadow()
-        
+    }
+    
+    @IBAction func UnlockQRCodeBtn(_ sender: UIButton) {
+//        self.performSegue(withIdentifier: "UnlockSeg", sender: self)
     }
     
     func setGradualChangColor(frame: CGRect) -> CAGradientLayer {
@@ -64,15 +50,4 @@ class HomeViewController: UIViewController {
 
 
 }
-//
-//extension UIView {
-//    func dropShadow(scale: Bool = true) {
-//        layer.masksToBounds = false
-//        layer.shadowColor = UIColor.lightGray.cgColor
-//        layer.shadowOpacity = 0.5
-//        layer.shadowOffset = .zero
-//        layer.shadowRadius = 8
-//        layer.shouldRasterize = true
-//        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
-//    }
-//}
+

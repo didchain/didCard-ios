@@ -15,7 +15,14 @@ class NewAccountViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+//    func createAcc(password:String) -> Bool {
+//        guard let ret = IosLibNewCard(password) else{
+//            return false
+//        }
+//        let json_Str = String(data: ret, encoding: .utf8)
+//        NSLog("\(String(describing: json_Str))")
+//        return true
+//    }
     /*
     // MARK: - Navigation
 

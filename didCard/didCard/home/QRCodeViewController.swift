@@ -8,14 +8,13 @@
 import UIKit
 
 class QRCodeViewController: UIViewController {
-    @IBOutlet weak var QRCodeView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        QRCodeView.layer.borderColor = UIColor(red: 245/255, green: 201/255, blue: 92/255, alpha: 1).cgColor
+//
+//        QRCodeView.layer.borderColor = UIColor(red: 245/255, green: 201/255, blue: 92/255, alpha: 1).cgColor
     }
     
 
