@@ -17,97 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-B0-6Qx" userLabel="IDCardView">
-                                <rect key="frame" x="19" y="104" width="377" height="128"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x58-o1-3Qr" userLabel="QRCodeContainer">
-                                        <rect key="frame" x="257" y="16" width="96" height="96"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2d-ud-ta0">
-                                                <rect key="frame" x="8" y="8" width="80" height="80"/>
-                                                <state key="normal" title="二维码">
-                                                    <color key="titleColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="ylx-hy-Z9e" kind="show" id="7Gp-5w-OKI"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" button="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="96" id="9he-Nf-cmc"/>
-                                            <constraint firstAttribute="width" constant="96" id="ANS-cY-g3r"/>
-                                            <constraint firstItem="o2d-ud-ta0" firstAttribute="bottom" secondItem="x58-o1-3Qr" secondAttribute="bottomMargin" id="HKz-1J-y1S"/>
-                                            <constraint firstItem="o2d-ud-ta0" firstAttribute="top" secondItem="x58-o1-3Qr" secondAttribute="topMargin" id="bve-yb-pHg"/>
-                                            <constraint firstItem="o2d-ud-ta0" firstAttribute="trailing" secondItem="x58-o1-3Qr" secondAttribute="trailingMargin" id="sj8-tP-Lih"/>
-                                            <constraint firstItem="o2d-ud-ta0" firstAttribute="leading" secondItem="x58-o1-3Qr" secondAttribute="leadingMargin" id="u7C-Ph-B7g"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOq-bM-Zui">
-                                        <rect key="frame" x="22" y="33" width="71.5" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <color key="textColor" red="0.047058823529411764" green="0.070588235294117646" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qqr_img" translatesAutoresizingMaskIntoConstraints="NO" id="GZA-qC-uaU">
-                                        <rect key="frame" x="169" y="90" width="86" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="b7j-7T-c7z"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789123456789" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2l-Ib-RfX">
-                                        <rect key="frame" x="22" y="55" width="194" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="YSy-1q-kgG"/>
-                                            <constraint firstAttribute="height" constant="22" id="ZM0-hT-K47"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <color key="textColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="0.7425948389" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="719-MT-73v"/>
-                                    <constraint firstItem="a2l-Ib-RfX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HI5-B0-6Qx" secondAttribute="leadingMargin" id="REh-di-BH3"/>
-                                    <constraint firstItem="a2l-Ib-RfX" firstAttribute="top" secondItem="LOq-bM-Zui" secondAttribute="bottom" constant="5" id="awp-lb-NQO"/>
-                                    <constraint firstItem="x58-o1-3Qr" firstAttribute="leading" secondItem="a2l-Ib-RfX" secondAttribute="trailing" constant="41" id="diE-AB-ooS"/>
-                                    <constraint firstItem="LOq-bM-Zui" firstAttribute="leading" secondItem="HI5-B0-6Qx" secondAttribute="leadingMargin" constant="14" id="fKP-UZ-NBg"/>
-                                    <constraint firstItem="x58-o1-3Qr" firstAttribute="leading" secondItem="LOq-bM-Zui" secondAttribute="trailing" constant="163.5" id="fiR-Cq-UNa"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="x58-o1-3Qr" secondAttribute="trailing" constant="16" id="gNh-Ja-mPJ"/>
-                                    <constraint firstItem="x58-o1-3Qr" firstAttribute="leading" secondItem="GZA-qC-uaU" secondAttribute="trailing" constant="2" id="mxA-Ch-9HA"/>
-                                    <constraint firstItem="LOq-bM-Zui" firstAttribute="top" secondItem="HI5-B0-6Qx" secondAttribute="topMargin" constant="25" id="pmb-HG-iTg"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="GZA-qC-uaU" secondAttribute="bottom" constant="12" id="qGV-vF-FOa"/>
-                                    <constraint firstItem="x58-o1-3Qr" firstAttribute="centerY" secondItem="HI5-B0-6Qx" secondAttribute="centerY" id="zAV-EF-wIw"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.20000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                        <size key="value" width="0.0" height="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0VZ-j6-ewF" userLabel="ServiceView">
-                                <rect key="frame" x="19" y="244" width="377" height="130"/>
+                                <rect key="frame" x="19" y="600" width="377" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="便民服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8l-IF-Qdi">
                                         <rect key="frame" x="22" y="19" width="66" height="19.5"/>
@@ -244,34 +155,60 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-8j-15G">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="293"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="293" id="L3a-AC-hsF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-B0-6Qx" userLabel="IDCardView">
+                                <rect key="frame" x="18" y="170" width="377" height="414"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HI5-B0-6Qx" secondAttribute="height" multiplier="338:371" id="imT-H9-uZx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9h8-ss-T2w"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0VZ-j6-ewF" firstAttribute="top" secondItem="HI5-B0-6Qx" secondAttribute="bottom" constant="12" id="AXB-ds-GNn"/>
+                            <constraint firstItem="dlV-8j-15G" firstAttribute="trailing" secondItem="9h8-ss-T2w" secondAttribute="trailing" id="Eex-Rk-Kdl"/>
                             <constraint firstItem="9h8-ss-T2w" firstAttribute="trailing" secondItem="0VZ-j6-ewF" secondAttribute="trailing" constant="18" id="JS7-d9-ezh"/>
-                            <constraint firstItem="HI5-B0-6Qx" firstAttribute="top" secondItem="9h8-ss-T2w" secondAttribute="top" constant="16" id="QGN-Bw-PNr"/>
-                            <constraint firstItem="HI5-B0-6Qx" firstAttribute="leading" secondItem="9h8-ss-T2w" secondAttribute="leading" constant="19" id="S0Y-uO-QD8"/>
-                            <constraint firstItem="9h8-ss-T2w" firstAttribute="trailing" secondItem="HI5-B0-6Qx" secondAttribute="trailing" constant="18" id="c2N-lZ-2jj"/>
+                            <constraint firstItem="HI5-B0-6Qx" firstAttribute="top" secondItem="9h8-ss-T2w" secondAttribute="top" constant="126" id="Kqm-Hw-yXX"/>
+                            <constraint firstItem="dlV-8j-15G" firstAttribute="top" secondItem="bML-lP-JvG" secondAttribute="top" id="LTd-Pr-kNe"/>
+                            <constraint firstItem="HI5-B0-6Qx" firstAttribute="leading" secondItem="9h8-ss-T2w" secondAttribute="leading" constant="18" id="RfE-21-Fio"/>
+                            <constraint firstItem="dlV-8j-15G" firstAttribute="leading" secondItem="9h8-ss-T2w" secondAttribute="leading" id="U6r-NJ-aBK"/>
+                            <constraint firstItem="0VZ-j6-ewF" firstAttribute="top" secondItem="HI5-B0-6Qx" secondAttribute="bottom" constant="16" id="akO-Y9-eQN"/>
+                            <constraint firstItem="9h8-ss-T2w" firstAttribute="trailing" secondItem="HI5-B0-6Qx" secondAttribute="trailing" constant="19" id="f0J-rf-zFE"/>
                             <constraint firstItem="0VZ-j6-ewF" firstAttribute="leading" secondItem="9h8-ss-T2w" secondAttribute="leading" constant="19" id="qdo-rx-w0M"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="区块链身份证" id="YkR-ke-mDB">
-                        <barButtonItem key="leftBarButtonItem" title="address" id="e76-6C-Ueh">
-                            <color key="tintColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="区块链身份证" id="YkR-ke-mDB"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="AddressBarItem" destination="e76-6C-Ueh" id="OsT-84-wV9"/>
+                        <outlet property="HomeBackground" destination="dlV-8j-15G" id="dBr-t7-l7v"/>
                         <outlet property="HomeTabBar" destination="dig-Hq-ShI" id="eos-AZ-H38"/>
                         <outlet property="IDCardView" destination="HI5-B0-6Qx" id="1hW-FS-42P"/>
-                        <outlet property="QRCodeView" destination="x58-o1-3Qr" id="P5q-D4-SKp"/>
-                        <outlet property="ServiceView" destination="0VZ-j6-ewF" id="5E3-V5-FGl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ii-Jg-kaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1229" y="739"/>
+            <point key="canvasLocation" x="1228.985507246377" y="738.61607142857144"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="O3K-pM-KFe">
@@ -282,7 +219,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xag-h6-8ND">
-                                <rect key="frame" x="44" y="161" width="327" height="351"/>
+                                <rect key="frame" x="44" y="117" width="327" height="351"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThP-zy-R9u">
                                         <rect key="frame" x="41" y="27" width="58" height="22"/>
@@ -1216,7 +1153,7 @@
         <!--View Controller-->
         <scene sceneID="EC2-Zz-6qO">
             <objects>
-                <viewController id="Hm5-Lb-B3G" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="Hm5-Lb-B3G" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NyD-wb-NKs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1267,7 +1204,7 @@
         <!--View Controller-->
         <scene sceneID="Vmb-IY-ILt">
             <objects>
-                <viewController id="T1z-zL-mVe" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="T1z-zL-mVe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sc9-c5-K0x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1715,7 +1652,7 @@
             <objects>
                 <viewController id="Ruk-si-cpI" customClass="ImportViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyj-EE-L0E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9Nd-OA-bTV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1727,6 +1664,9 @@
                     <navigationItem key="navigationItem" title="导入身份证" id="k2g-r1-HWq">
                         <barButtonItem key="rightBarButtonItem" title="相册" id="6Bi-KV-ncg">
                             <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="ImportPhotoButton:" destination="Ruk-si-cpI" id="Yhz-2N-CgH"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -2013,13 +1953,13 @@
         <!--首页-->
         <scene sceneID="pkz-uo-7cI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xxD-yL-w6Z" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xxD-yL-w6Z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="home_tab_icon" selectedImage="home_tab_vis_icon" id="dig-Hq-ShI">
                         <color key="badgeColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="py8-u2-11F">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2063,7 +2003,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="yVG-Ty-eOA"/>
-        <segue reference="VfT-Si-MAc"/>
+        <segue reference="JcM-W8-bLm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
@@ -2081,7 +2021,6 @@
         <image name="next_icon" width="22" height="22"/>
         <image name="nexts_icon" width="26" height="26"/>
         <image name="notice_icon" width="43" height="43"/>
-        <image name="qqr_img" width="86" height="18"/>
         <image name="qr_icon" width="22" height="22"/>
         <image name="se_icon" width="22" height="22"/>
         <image name="tip1_img" width="28" height="28"/>

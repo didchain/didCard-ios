@@ -18,7 +18,7 @@ class ImportViewController: UIViewController {
     
 //    @IBOutlet var messageLabel: UILabel!
 //    @IBOutlet var topBar: UIView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +34,6 @@ class ImportViewController: UIViewController {
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
 
-            // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             //captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
@@ -44,15 +43,13 @@ class ImportViewController: UIViewController {
             videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
-            
-            // Start video capture
+
             captureSession.startRunning()
             
             // Move the message label and top bar to the front
 //            view.bringSubviewToFront(messageLabel)
 //            view.bringSubviewToFront(topBar)
             
-            // Initialize QR Code Frame to highlight the QR Code
             qrCodeFrameView = UIView()
             
             if let qrcodeFrameView = qrCodeFrameView {
@@ -68,37 +65,69 @@ class ImportViewController: UIViewController {
         }
     }
     
+    @IBAction func ImportPhotoButton(_ sender: UIButton) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = false
+        present(vc, animated: true, completion: nil)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
 }
 
-extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate {
+extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        print("\(info)")
+        
+//        guard let qrcodeImg = info[.originalImage] as? UIImage else {
+//            return
+//        }
+        picker.dismiss(animated: true, completion: nil)
+        let qrcodeImg = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as! UIImage
+        
+        
+        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
+        let ciImage = CIImage(image: qrcodeImg)!
+        
+        let features = detector.features(in: ciImage)
+        var codeStr = ""
+        
+        for feature in features as! [CIQRCodeFeature] {
+            codeStr += feature.messageString!
+        }
+        
+        if codeStr == "" {
+            print("failed to phrase qrcode")
+            return
+        } else {
+            print(codeStr)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        // Check if the metadataObjects array is not nil and it contains at least one object
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-//            messageLabel.text = "No QR code is detected"
             return
         }
         
-        // Get the metadata object
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
-            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
+                let alert = UIAlertController(title: "QR Code", message: metadataObj.stringValue, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "重新扫描", style: .default, handler: nil))
+                
+                present(alert, animated: true, completion: nil)
 //                messageLabel.text = metadataObj.stringValue
                 print(metadataObj.stringValue!)
             }
