@@ -14,6 +14,8 @@
 		081ACEB925CBE30A00C23B3C /* IdentityManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEB825CBE30A00C23B3C /* IdentityManagementViewController.swift */; };
 		081ACEC225D1151E00C23B3C /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEC125D1151E00C23B3C /* Wallet.swift */; };
 		081ACEC625D1157B00C23B3C /* DIDBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEC425D1157B00C23B3C /* DIDBase.xcdatamodeld */; };
+		08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
+		08CC9C4025E0A79B00E07589 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
@@ -27,6 +29,20 @@
 		69711D8D25B7F4C700B83E6C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 69711D8C25B7F4C700B83E6C /* Cartfile */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		08CC9C4125E0A79B00E07589 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				08CC9C4025E0A79B00E07589 /* SwiftyJSON.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		081ACEAD25CB818400C23B3C /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +51,7 @@
 		081ACEB825CBE30A00C23B3C /* IdentityManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityManagementViewController.swift; sourceTree = "<group>"; };
 		081ACEC125D1151E00C23B3C /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		081ACEC525D1157B00C23B3C /* DIDBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DIDBase.xcdatamodel; sourceTree = "<group>"; };
+		08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = didCard/Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		69694E1225C9124600309185 /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1625C9127400309185 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1925C912A200309185 /* BackUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +158,7 @@
 		69EB0D4625CCF9910033B373 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */,
 				69EB0D4725CCF9910033B373 /* iosLib.framework */,
 			);
 			name = Frameworks;
@@ -155,6 +174,8 @@
 				69711D6D25B7F47200B83E6C /* Sources */,
 				69711D6E25B7F47200B83E6C /* Frameworks */,
 				69711D6F25B7F47200B83E6C /* Resources */,
+				08CC9C4125E0A79B00E07589 /* Embed Frameworks */,
+				08CC9C4225E0AC6500E07589 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,6 +231,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08CC9C4225E0AC6500E07589 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MBProgressHUD.framework",
+				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/Carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		69711D6D25B7F47200B83E6C /* Sources */ = {
@@ -379,9 +425,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
+				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/didCard/bin",
+					"$(PROJECT_DIR)/didCard/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = didCard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -394,6 +442,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = dev_did_card;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -408,6 +457,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/didCard/bin",
+					"$(PROJECT_DIR)/didCard/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = didCard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -420,6 +470,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
