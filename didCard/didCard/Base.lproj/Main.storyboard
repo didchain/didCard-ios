@@ -177,7 +177,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="GkE-F9-fy7" firstAttribute="top" secondItem="dlV-8j-15G" secondAttribute="top" constant="69" id="2Dg-Wa-XLV"/>
                                     <constraint firstItem="mIr-kd-uZc" firstAttribute="leading" secondItem="dlV-8j-15G" secondAttribute="leading" constant="28" id="3su-M9-N2d"/>
@@ -186,15 +186,14 @@
                                     <constraint firstItem="GkE-F9-fy7" firstAttribute="leading" secondItem="dlV-8j-15G" secondAttribute="leading" constant="27" id="FqC-Xm-iwb"/>
                                     <constraint firstItem="mIr-kd-uZc" firstAttribute="top" secondItem="GkE-F9-fy7" secondAttribute="bottom" constant="16" id="Hpf-cq-AzB"/>
                                     <constraint firstAttribute="trailing" secondItem="vUc-Cb-jMP" secondAttribute="trailing" constant="30" id="KLu-VR-yNW"/>
-                                    <constraint firstAttribute="height" constant="293" id="Mbm-CE-IJ6"/>
                                     <constraint firstItem="vUc-Cb-jMP" firstAttribute="top" secondItem="dlV-8j-15G" secondAttribute="top" constant="57" id="QT7-hK-ntq"/>
-                                    <constraint firstAttribute="width" secondItem="dlV-8j-15G" secondAttribute="height" multiplier="414:293" id="a9t-Pn-QwH"/>
                                     <constraint firstItem="TPo-28-5zo" firstAttribute="leading" secondItem="dlV-8j-15G" secondAttribute="leading" constant="28" id="eGa-CN-Gxt"/>
+                                    <constraint firstAttribute="width" secondItem="dlV-8j-15G" secondAttribute="height" multiplier="414:293" id="mjv-IF-fA0"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mIr-kd-uZc" secondAttribute="trailing" constant="20" symbolic="YES" id="pqJ-aP-hfP"/>
                                     <constraint firstItem="TPo-28-5zo" firstAttribute="top" secondItem="mIr-kd-uZc" secondAttribute="bottom" id="thi-hW-o8y"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-B0-6Qx" userLabel="IDCardView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-B0-6Qx" userLabel="IDCardView">
                                 <rect key="frame" x="19" y="179" width="377" height="414.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证二维码被锁定请输入二维码解锁" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqJ-tY-3CV">
@@ -268,15 +267,15 @@
                             <constraint firstItem="0VZ-j6-ewF" firstAttribute="top" secondItem="HI5-B0-6Qx" secondAttribute="bottom" constant="16" id="OZx-Qe-c7O"/>
                             <constraint firstItem="dlV-8j-15G" firstAttribute="top" secondItem="bML-lP-JvG" secondAttribute="top" id="TcA-My-sr0"/>
                             <constraint firstItem="9h8-ss-T2w" firstAttribute="trailing" secondItem="HI5-B0-6Qx" secondAttribute="trailing" constant="18" id="Wvb-tb-LEK"/>
+                            <constraint firstItem="dlV-8j-15G" firstAttribute="centerX" secondItem="bML-lP-JvG" secondAttribute="centerX" id="Z3I-Fe-0hs"/>
+                            <constraint firstItem="dlV-8j-15G" firstAttribute="width" secondItem="9h8-ss-T2w" secondAttribute="width" id="eq7-rZ-6Kg"/>
                             <constraint firstItem="HI5-B0-6Qx" firstAttribute="top" secondItem="9h8-ss-T2w" secondAttribute="top" constant="135" id="k29-ql-xuz"/>
-                            <constraint firstItem="dlV-8j-15G" firstAttribute="trailing" secondItem="9h8-ss-T2w" secondAttribute="trailing" id="peg-Oh-OWW"/>
-                            <constraint firstItem="dlV-8j-15G" firstAttribute="leading" secondItem="9h8-ss-T2w" secondAttribute="leading" id="yun-UW-iIl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="区块链身份证" id="YkR-ke-mDB"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="HomeBackground" destination="dlV-8j-15G" id="dBr-t7-l7v"/>
+                        <outlet property="HomeBackground" destination="dlV-8j-15G" id="7CH-qt-oH2"/>
                         <outlet property="HomeTabBar" destination="dig-Hq-ShI" id="eos-AZ-H38"/>
                         <outlet property="IDCardView" destination="HI5-B0-6Qx" id="1hW-FS-42P"/>
                     </connections>
@@ -1776,7 +1775,7 @@
             <objects>
                 <viewController id="Ruk-si-cpI" customClass="ImportViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyj-EE-L0E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9Nd-OA-bTV"/>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2160,7 +2159,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Weg-f5-cHC"/>
-        <segue reference="U1B-i2-QBy"/>
+        <segue reference="gVd-r8-eLi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
