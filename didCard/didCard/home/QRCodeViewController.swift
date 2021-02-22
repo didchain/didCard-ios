@@ -9,6 +9,7 @@ import UIKit
 
 class QRCodeViewController: UIViewController {
     
+    @IBOutlet weak var PasswordFD: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,16 +17,5 @@ class QRCodeViewController: UIViewController {
 //
 //        QRCodeView.layer.borderColor = UIColor(red: 245/255, green: 201/255, blue: 92/255, alpha: 1).cgColor
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

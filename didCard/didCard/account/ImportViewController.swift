@@ -83,6 +83,9 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
 //        guard let qrcodeImg = info[.originalImage] as? UIImage else {
 //            return
 //        }
+        if #available(iOS 13.0, *) {
+            picker.navigationBar.barTintColor = .systemBackground
+        }
         picker.dismiss(animated: true, completion: nil)
         let qrcodeImg = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as! UIImage
         
