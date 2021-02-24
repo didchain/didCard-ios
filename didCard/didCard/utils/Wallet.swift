@@ -8,38 +8,71 @@
 import Foundation
 import IosLib
 import SwiftyJSON
+import CoreData
 
 class Wallet: NSObject {
-    
-    var time_stamp:Int64?
-    var latitude:Double?
-    var longitude:Double?
-    var signature:String?
     var did:String?
+    var walletJSON:String?
+    
+    var coreData:CDWallet?
+    
+    var hasAccount:Bool = true
     
     public static var WInst = Wallet()
     
+    let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    
     override init() {
+        
         super.init()
+        guard let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet else { return }
         
+        guard let jsonStr = core_data.walletJSON, jsonStr != "" else {
+            hasAccount = false
+            return
+        }
         
-        
+        self.did = core_data.did
+        self.walletJSON = core_data.walletJSON
+        coreData = core_data
     }
-    func NewAcc(pwd: String) -> Bool {
-//        guard let jsonData = IosLibNewCard(pwd) else { return false }
-//        let jsonObj = JSON(jsonData)
-//        self.did = jsonObj["did"].string
-//        self.latitude = jsonObj["latitude"].double
-//        self.longitude = jsonObj["longitude"].double
-//        self.signature = jsonObj["signature"].string
-//        self.time_stamp = jsonObj["time_stamp"].int64
+    
+    public static func NewAcc(auth: String) -> Bool {
+        guard let jsonData = IosLibNewCard(auth) else {
+            return false
+        }
+        populateWallet(data: jsonData)
         
-        
-//        guard let jsonObj = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: AnyObject]] else {
-//            return false
-//        }
-//        print(jsonObj)
         return true
     }
-}
+    
+    public static func ImportAcc(auth: String, json: String) -> Bool {
+        guard (IosLibImport(auth, json) != nil) else {
+            return false
+        }
+        populateWallet(data: Data(json.utf8))
+        
+        return true
+    }
+    
+    public func initByJson(_ jsonData:Data){
+        let jsonObj = JSON(jsonData)
+        self.did = jsonObj["did"].string
+        self.walletJSON = jsonObj["walletJSON"].string
+    }
+    
+    private static func populateWallet(data: Data) {
+        WInst.initByJson(data)
 
+        guard let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet else { return }
+
+        core_data.walletJSON = String(data: data, encoding: .utf8)
+        core_data.did = WInst.did
+
+        WInst.coreData = core_data
+        
+        DataShareManager.sharedInstance.saveContext()
+        
+    }
+    
+}

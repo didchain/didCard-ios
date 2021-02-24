@@ -193,7 +193,7 @@
                                     <constraint firstItem="TPo-28-5zo" firstAttribute="top" secondItem="mIr-kd-uZc" secondAttribute="bottom" id="thi-hW-o8y"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-B0-6Qx" userLabel="IDCardView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-B0-6Qx" userLabel="IDCardView">
                                 <rect key="frame" x="19" y="179" width="377" height="414.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证二维码被锁定请输入二维码解锁" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqJ-tY-3CV">
@@ -282,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ii-Jg-kaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228.985507246377" y="738.61607142857144"/>
+            <point key="canvasLocation" x="1229" y="524"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="O3K-pM-KFe">
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3bf-9B-bHM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015.9420289855075" y="738.61607142857144"/>
+            <point key="canvasLocation" x="2016" y="524"/>
         </scene>
         <!--授权他人-->
         <scene sceneID="J3g-h0-XqZ">
@@ -1183,7 +1183,7 @@
         <!--新建身份证-->
         <scene sceneID="Jer-Lf-tcv">
             <objects>
-                <viewController id="RxT-7E-fWS" sceneMemberID="viewController">
+                <viewController id="RxT-7E-fWS" customClass="CreateNewCardViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZUk-of-Pby">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1236,8 +1236,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="CreateAccount:" destination="RxT-7E-fWS" eventType="touchUpInside" id="2bX-OA-a1V"/>
                                     <action selector="CreateAccount:" destination="4XI-Q6-BRy" eventType="touchUpInside" id="iQ7-Fu-cml"/>
-                                    <segue destination="1II-G9-PgB" kind="show" id="yVG-Ty-eOA"/>
+                                    <segue destination="1II-G9-PgB" kind="show" identifier="CreateSuccessSeg" id="yVG-Ty-eOA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示： 本身份为区块链身份系统，创建时无网络无需验证，无密码找回功能" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="159-e4-WxK">
@@ -1268,6 +1269,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新建身份证" id="Pks-gD-czF"/>
+                    <connections>
+                        <outlet property="PassWrod1FD" destination="EyL-2o-KoM" id="jtQ-TP-7ZO"/>
+                        <outlet property="PassWrod2FD" destination="mqU-Xx-TZ1" id="XKP-OU-yhE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFs-WM-F07" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1745,7 +1750,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="Ruk-si-cpI" kind="show" id="gVd-r8-eLi"/>
+                                            <segue destination="Ee0-Rd-pK2" kind="show" id="fuW-uD-Y9n"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1775,7 +1780,7 @@
             <objects>
                 <viewController id="Ruk-si-cpI" customClass="ImportViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyj-EE-L0E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9Nd-OA-bTV"/>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1918,11 +1923,11 @@
             <objects>
                 <viewController id="1II-G9-PgB" customClass="BackUpViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zdY-V9-0aP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip1_img" translatesAutoresizingMaskIntoConstraints="NO" id="v3w-N0-DXQ">
-                                <rect key="frame" x="35" y="109" width="28" height="28"/>
+                                <rect key="frame" x="35" y="153" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="2Np-V6-fSh"/>
                                     <constraint firstAttribute="width" secondItem="v3w-N0-DXQ" secondAttribute="height" multiplier="1:1" id="Dgm-ZC-paR"/>
@@ -1930,7 +1935,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqr-HF-UqA">
-                                <rect key="frame" x="35" y="137" width="37" height="25"/>
+                                <rect key="frame" x="35" y="181" width="37" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Dqr-HF-UqA" secondAttribute="height" multiplier="37:25" id="89h-YF-YrV"/>
                                     <constraint firstAttribute="height" constant="25" id="b5D-Wd-Ing"/>
@@ -1943,7 +1948,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="directcurrent" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1g9-bU-mjx">
-                                <rect key="frame" x="10" y="214.5" width="24" height="9.5"/>
+                                <rect key="frame" x="10" y="258.5" width="24" height="9.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="9G5-hD-zcU"/>
                                     <constraint firstAttribute="width" secondItem="1g9-bU-mjx" secondAttribute="height" multiplier="12:11" id="O4p-sb-C9Y"/>
@@ -1951,7 +1956,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isw-B6-dwg">
-                                <rect key="frame" x="35" y="191" width="195" height="144"/>
+                                <rect key="frame" x="35" y="235" width="195" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="195" id="KXx-j0-yfk"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="144" id="SCM-T7-WzN"/>
@@ -1966,7 +1971,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyB-0I-x0p">
-                                <rect key="frame" x="18" y="610" width="377" height="48"/>
+                                <rect key="frame" x="18" y="698" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DyB-0I-x0p" secondAttribute="height" multiplier="377:48" id="5Ta-cN-Rjj"/>
@@ -1983,7 +1988,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yt-GB-PNJ">
-                                <rect key="frame" x="190.5" y="670" width="33" height="23"/>
+                                <rect key="frame" x="190.5" y="758" width="33" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="Rc0-ek-M3G"/>
                                     <constraint firstAttribute="width" secondItem="2yt-GB-PNJ" secondAttribute="height" multiplier="33:23" id="cvn-6E-pU8"/>
@@ -1994,9 +1999,12 @@
                                     <color key="titleColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                 </state>
+                                <connections>
+                                    <action selector="BackToHome:" destination="1II-G9-PgB" eventType="touchUpInside" id="Yj3-aj-FqP"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKw-Kp-EgH">
-                                <rect key="frame" x="191" y="695" width="32" height="2"/>
+                                <rect key="frame" x="191" y="783" width="32" height="2"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="1bz-37-z3V"/>
@@ -2030,6 +2038,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5h6-5u-5p6"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTy-u7-dIc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2043,8 +2052,6 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="lAQ-Ho-nwb" kind="relationship" relationship="rootViewController" id="GGg-Pk-AAf"/>
@@ -2057,9 +2064,10 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Xxj-UN-j1A">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Pj-Rj-VWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="INt-v1-SIL" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" id="INt-v1-SIL" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ir8-QM-1ah"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9V7-9P-2Q3">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2074,13 +2082,14 @@
                         <segue destination="ULV-PD-FNg" kind="relationship" relationship="viewControllers" id="l2Q-14-5Wx"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Pj-Rj-VWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="-652"/>
+            <point key="canvasLocation" x="464" y="-636"/>
         </scene>
         <!--首页-->
         <scene sceneID="pkz-uo-7cI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xxD-yL-w6Z" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="xxD-yL-w6Z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="home_tab_icon" selectedImage="home_tab_vis_icon" id="dig-Hq-ShI">
                         <color key="badgeColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
@@ -2102,7 +2111,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="an2-n3-fLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="739"/>
+            <point key="canvasLocation" x="464" y="524"/>
         </scene>
         <!--我的-->
         <scene sceneID="ROt-ch-x5A">
@@ -2125,7 +2134,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oS-Ub-tFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1229" y="76"/>
+            <point key="canvasLocation" x="1229" y="-344"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JdU-Cq-Mrj">
@@ -2154,12 +2163,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRc-PC-KFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1229" y="-652"/>
+            <point key="canvasLocation" x="1229" y="-1045"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="fuW-uD-Y9n"/>
         <segue reference="Weg-f5-cHC"/>
-        <segue reference="gVd-r8-eLi"/>
+        <segue reference="sT4-y6-ium"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
     <resources>

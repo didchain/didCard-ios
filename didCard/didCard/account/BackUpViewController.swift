@@ -15,7 +15,10 @@ class BackUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func BackToHome(_ sender: UIButton) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

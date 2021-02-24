@@ -12,9 +12,21 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var PassWrod2FD: UITextField!
     @IBOutlet weak var PassWrod1FD: UITextField!
     override func viewDidLoad() {
-    super.viewDidLoad()
-
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//        
+//        let newWallet = NSEntityDescription.insertNewObject(forEntityName: "CDWallet", into: context)
+//        
+//        newWallet.setValue("", forKey: "walletJSON")
+//        
+//        do {
+//            try context.save()
+//            print("SAVED")
+//        } catch  {
+//            print(error)
+//        }
     }
     
     @IBAction func CreateAccount(_ sender: UIButton) {
@@ -32,9 +44,14 @@ class CreateAccountViewController: UIViewController {
             return
         }
         
+        if false == Wallet.NewAcc(auth: password) {
+            return
+        }
+
         self.performSegue(withIdentifier: "CreateSuccessSeg", sender: self)
+//        self.dismiss(animated: true, completion: nil)
     }
-        
+    
         
 }
 

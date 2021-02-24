@@ -19,10 +19,6 @@ class HomeViewController: UIViewController {
         HomeBackground.layer.insertSublayer(setGradualChangColor(frame: HomeBackground.bounds), at: 0)
         HomeBackground.layer.mask = configRectCorner(view: HomeBackground, corner: [.bottomLeft, .bottomRight] , radii: CGSize(width: 100, height: 100))
     
-        print("XXxXXXX")
-        
-        print("\(HomeBackground.bounds.size.width)")
-        print("\(HomeBackground.bounds.size.height)")
         IDCardView.layer.contents = UIImage(named: "bg")?.cgImage
         
     }
@@ -43,29 +39,18 @@ class HomeViewController: UIViewController {
     }
     
     func configRectCorner(view: UIView, corner: UIRectCorner, radii: CGSize) -> CALayer {
-            
-        let maskPath = UIBezierPath.init(roundedRect: view.bounds, byRoundingCorners: corner, cornerRadii: radii)
+        var bouns_s = view.bounds
+        bouns_s.size.width = self.view.bounds.size.width
+        
+        let maskPath = UIBezierPath.init(roundedRect: bouns_s, byRoundingCorners: corner, cornerRadii: radii)
         
         let maskLayer = CAShapeLayer.init()
-        maskLayer.frame = view.bounds
-//        maskLayer.bounds.size.width = UIScreen.main.bounds.width
-//        maskLayer.bounds.size.height = view.bounds.size.height
+        maskLayer.frame = bouns_s
         maskLayer.path = maskPath.cgPath
-        print("masklayer")
-        print("\(maskLayer.bounds.size.width)")
-        print("\(maskLayer.bounds.size.height)")
-    
-        print("\(UIScreen.main.bounds.size.width)")
+        
         return maskLayer
         
     }
-    
-//    open func setCornerRadius(radius:CGFloat){
-//        let shapeLayer = CAShapeLayer.init()
-//        shapeLayer.path = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: radius).cgPath
-//        self.layer.mask = shapeLayer
-//    }
-
 
 }
 
