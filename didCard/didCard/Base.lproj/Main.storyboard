@@ -278,6 +278,7 @@
                         <outlet property="HomeBackground" destination="dlV-8j-15G" id="7CH-qt-oH2"/>
                         <outlet property="HomeTabBar" destination="dig-Hq-ShI" id="eos-AZ-H38"/>
                         <outlet property="IDCardView" destination="HI5-B0-6Qx" id="1hW-FS-42P"/>
+                        <segue destination="BC2-cR-lxq" kind="presentation" identifier="CreateAccountSegID" animates="NO" modalPresentationStyle="overFullScreen" id="ihn-KL-6ZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ii-Jg-kaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1276,7 +1277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFs-WM-F07" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3551" y="-636"/>
+            <point key="canvasLocation" x="3619" y="-616"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EC2-Zz-6qO">
@@ -1375,7 +1376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yiw-bF-Jeb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3551" y="-1357"/>
+            <point key="canvasLocation" x="4460.8695652173919" y="-1357.3660714285713"/>
         </scene>
         <!--修改密码-->
         <scene sceneID="XSL-kQ-fGG">
@@ -1522,7 +1523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdy-Zw-6KN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2783" y="-1731"/>
+            <point key="canvasLocation" x="4461" y="-2089"/>
         </scene>
         <!--设置-->
         <scene sceneID="1hj-db-Ujw">
@@ -1688,28 +1689,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhB-7Y-ZCN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2783" y="-1013"/>
+            <point key="canvasLocation" x="3668" y="-1460"/>
         </scene>
         <!--New Account View Controller-->
         <scene sceneID="7NP-MD-9mk">
             <objects>
                 <viewController id="lAQ-Ho-nwb" customClass="NewAccountViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KbZ-Xu-Fzh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="w62-aE-Sd6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="638"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account_img" translatesAutoresizingMaskIntoConstraints="NO" id="zTf-nE-tUM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="638"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9Xa-BP-tCL">
-                                <rect key="frame" x="64" y="577" width="286" height="112"/>
+                                <rect key="frame" x="64" y="665" width="286" height="112"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gk-iv-wie">
                                         <rect key="frame" x="0.0" y="0.0" width="286" height="48"/>
@@ -1773,7 +1774,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7o-01-Ief" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DXB-az-ZZm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="463.768115942029" y="-1357.3660714285713"/>
+            <point key="canvasLocation" x="1373.913043478261" y="-1357.3660714285713"/>
         </scene>
         <!--导入身份证-->
         <scene sceneID="72n-Y8-497">
@@ -1796,18 +1797,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbW-2b-iF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2016" y="-1045"/>
+            <point key="canvasLocation" x="2926.0869565217395" y="-1045.3125"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="vs7-WL-2z2">
             <objects>
                 <viewController id="4XI-Q6-BRy" customClass="CreateAccountViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTr-Xa-Ghy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_img" translatesAutoresizingMaskIntoConstraints="NO" id="njI-XK-U0b">
-                                <rect key="frame" x="18" y="121" width="60" height="60"/>
+                                <rect key="frame" x="18" y="165" width="60" height="60"/>
                                 <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="jiw-tr-2QI"/>
@@ -1815,7 +1816,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建身份" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Skr-AH-ean">
-                                <rect key="frame" x="18" y="197" width="98" height="33"/>
+                                <rect key="frame" x="18" y="241" width="98" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="wgz-aq-bYL"/>
                                 </constraints>
@@ -1824,7 +1825,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 输入密码" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="z4e-Er-KZj">
-                                <rect key="frame" x="18" y="246" width="377" height="48"/>
+                                <rect key="frame" x="18" y="290" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94509803921568625" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1840,7 +1841,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 再次输入" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9YF-oc-pdl">
-                                <rect key="frame" x="18" y="310" width="377" height="48"/>
+                                <rect key="frame" x="18" y="354" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1856,7 +1857,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示： 本身份为区块链身份系统，创建时无网络无需验证，无密码找回功能" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aE-BP-CZc">
-                                <rect key="frame" x="18" y="634" width="377" height="60"/>
+                                <rect key="frame" x="18" y="722" width="377" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xdg-eo-gVi"/>
                                 </constraints>
@@ -1865,7 +1866,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55c-sS-TO8">
-                                <rect key="frame" x="18" y="374" width="377" height="48"/>
+                                <rect key="frame" x="18" y="418" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="fRk-BR-gf0"/>
@@ -1916,7 +1917,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rju-Od-bep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230" y="-1731"/>
+            <point key="canvasLocation" x="2139.130434782609" y="-1731.0267857142856"/>
         </scene>
         <!--Back Up View Controller-->
         <scene sceneID="g2P-sx-y7O">
@@ -1971,7 +1972,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyB-0I-x0p">
-                                <rect key="frame" x="18" y="698" width="377" height="48"/>
+                                <rect key="frame" x="18" y="649" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DyB-0I-x0p" secondAttribute="height" multiplier="377:48" id="5Ta-cN-Rjj"/>
@@ -1988,7 +1989,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yt-GB-PNJ">
-                                <rect key="frame" x="190.5" y="758" width="33" height="23"/>
+                                <rect key="frame" x="190.5" y="709" width="33" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="Rc0-ek-M3G"/>
                                     <constraint firstAttribute="width" secondItem="2yt-GB-PNJ" secondAttribute="height" multiplier="33:23" id="cvn-6E-pU8"/>
@@ -2004,7 +2005,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKw-Kp-EgH">
-                                <rect key="frame" x="191" y="783" width="32" height="2"/>
+                                <rect key="frame" x="191" y="734" width="32" height="2"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="1bz-37-z3V"/>
@@ -2042,24 +2043,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTy-u7-dIc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2017" y="-1731"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9Z9-2D-gEq">
-            <objects>
-                <navigationController storyboardIdentifier="CreateVC" id="bGI-wl-brB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jZj-Qc-P5p">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="lAQ-Ho-nwb" kind="relationship" relationship="rootViewController" id="GGg-Pk-AAf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vhy-D9-23W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-314" y="-1357"/>
+            <point key="canvasLocation" x="2926.0869565217395" y="-1731.0267857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Xxj-UN-j1A">
@@ -2163,12 +2147,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRc-PC-KFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1229" y="-1045"/>
+            <point key="canvasLocation" x="2139.130434782609" y="-1045.3125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gcR-oA-EcN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="BC2-cR-lxq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DEV-fa-Dqi">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lAQ-Ho-nwb" kind="relationship" relationship="rootViewController" id="FUI-H1-gEl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LwI-QX-7mb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463.768115942029" y="-1357.3660714285713"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fuW-uD-Y9n"/>
-        <segue reference="Weg-f5-cHC"/>
+        <segue reference="yVG-Ty-eOA"/>
         <segue reference="sT4-y6-ium"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>

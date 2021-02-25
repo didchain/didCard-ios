@@ -7,34 +7,31 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    var _delegate: UIGestureRecognizerDelegate?
 
     @IBOutlet weak var PassWrod2FD: UITextField!
     @IBOutlet weak var PassWrod1FD: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//        
-//        let newWallet = NSEntityDescription.insertNewObject(forEntityName: "CDWallet", into: context)
-//        
-//        newWallet.setValue("", forKey: "walletJSON")
-//        
-//        do {
-//            try context.save()
-//            print("SAVED")
-//        } catch  {
-//            print(error)
-//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (self.navigationController?.viewControllers.count)! >= 1 {
+            _delegate = self.navigationController?.interactivePopGestureRecognizer?.delegate
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = _delegate
     }
     
     @IBAction func CreateAccount(_ sender: UIButton) {
-            
-        //TODO::
-        //lib create account
-        //result
-        
         if PassWrod1FD.text != PassWrod2FD.text {
             print("两次输入密码不同")
             return
@@ -49,7 +46,6 @@ class CreateAccountViewController: UIViewController {
         }
 
         self.performSegue(withIdentifier: "CreateSuccessSeg", sender: self)
-//        self.dismiss(animated: true, completion: nil)
     }
     
         

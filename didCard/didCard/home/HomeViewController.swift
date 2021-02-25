@@ -23,6 +23,19 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !Wallet.WInst.hasAccount {
+            self.showCreateDialog()
+            return
+        }
+    }
+    
+    func showCreateDialog(){
+        self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
+    }
+
+    
     @IBAction func UnlockQRCodeBtn(_ sender: UIButton) {
 //        self.performSegue(withIdentifier: "UnlockSeg", sender: self)
     }

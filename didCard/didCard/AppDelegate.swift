@@ -14,20 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var initialViewController: UIViewController
-
-        if Wallet.WInst.hasAccount {
-            initialViewController = mainStoryboard.instantiateInitialViewController()!
+        //initial view controller
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        var initialViewController: UIViewController
+//
+//        if !Wallet.WInst.hasAccount {
+////            initialViewController = mainStoryboard.instantiateInitialViewController()!
 //            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-        } else {
-            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "CreateVC")
-        }
-
-            self.window?.rootViewController = initialViewController
-
-            self.window?.makeKeyAndVisible()
+//        } else {
+//            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "CreateVC")
+//        }
+//
+//        self.window?.rootViewController = initialViewController
+//
+//        self.window?.makeKeyAndVisible()
 
         return true
     }
