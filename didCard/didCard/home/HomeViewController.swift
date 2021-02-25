@@ -25,6 +25,9 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("账号有没有")
+        print(String(Wallet.WInst.hasAccount))
+        print(String(Wallet.WInst.did ?? "没有"))
         if !Wallet.WInst.hasAccount {
             self.showCreateDialog()
             return

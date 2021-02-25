@@ -11,8 +11,8 @@ import CoreData
 class DataShareManager: NSObject {
     
     public static var sharedInstance = DataShareManager()
+    
     // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DIDBase")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -25,17 +25,28 @@ class DataShareManager: NSObject {
     
     // MARK: - NSManagedObject
     
-    func findEntity(forEntityName:String) -> NSManagedObject {
+    func findEntity(forEntityName:String) -> NSManagedObject? {
         let managedContext = self.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: forEntityName, in: managedContext)!
-        let result = NSManagedObject(entity: entity, insertInto: managedContext)
+        let fetchRequest =
+            NSFetchRequest<NSFetchRequestResult>(entityName: forEntityName)
+        fetchRequest.fetchLimit = 1
+        let result: NSManagedObject?
+        do {
+            let ret = try managedContext.fetch(fetchRequest)
+            return ret.last as! NSManagedObject?
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            result = nil
+        }
+//        let entity = NSEntityDescription.entity(forEntityName: forEntityName, in: managedContext)!
+//        let result = NSManagedObject(entity: entity, insertInto: managedContext)
         return result
     }
 
     // MARK: - Core Data Saving support
 
     func saveContext () {
-        let context = self.persistentContainer.viewContext
+        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -45,3 +56,6 @@ class DataShareManager: NSObject {
             }
         }
     }}
+extension NSManagedObject {
+    
+}

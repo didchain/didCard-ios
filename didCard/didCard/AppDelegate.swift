@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        if let rootVC = window?.rootViewController as? ViewController {
+            rootVC.container = DataShareManager.sharedInstance.persistentContainer
+        }
         //initial view controller
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
 //        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         NSLog("=======>timer invalidate--->")
 //        let context = DataShareManager.sharedInstance.persistentContainer.viewContext
+        DataShareManager.sharedInstance.saveContext()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
         DataShareManager.sharedInstance.saveContext()
     }
 

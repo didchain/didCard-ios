@@ -25,15 +25,14 @@ class Wallet: NSObject {
     override init() {
         
         super.init()
-        guard let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet else { return }
-        
-        guard let jsonStr = core_data.walletJSON, jsonStr != "" else {
+        var core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet
+        guard let jsonStr = core_data!.walletJSON, jsonStr != "" else {
             hasAccount = false
             return
         }
         
-        self.did = core_data.did
-        self.walletJSON = core_data.walletJSON
+        self.did = core_data!.did
+        self.walletJSON = core_data!.walletJSON
         coreData = core_data
     }
     
@@ -41,8 +40,9 @@ class Wallet: NSObject {
         guard let jsonData = IosLibNewCard(auth) else {
             return false
         }
+        print("jsonData is \(jsonData)")
         populateWallet(data: jsonData)
-        
+        self.WInst.hasAccount = true
         return true
     }
     
@@ -59,15 +59,21 @@ class Wallet: NSObject {
         let jsonObj = JSON(jsonData)
         self.did = jsonObj["did"].string
         self.walletJSON = jsonObj["walletJSON"].string
+        
+        print("init by json \(String(describing: self.did))")
     }
     
     private static func populateWallet(data: Data) {
         WInst.initByJson(data)
 
         guard let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet else { return }
-
-        core_data.walletJSON = String(data: data, encoding: .utf8)
-        core_data.did = WInst.did
+        
+        print("findentity\(core_data)")
+        
+        core_data.setValue(String(data: data, encoding: .utf8), forKey: "walletJSON")
+        core_data.setValue(WInst.did, forKey: "did")
+//        core_data.walletJSON = String(data: data, encoding: .utf8)
+//        core_data.did = WInst.did
 
         WInst.coreData = core_data
         

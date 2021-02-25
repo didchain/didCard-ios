@@ -32,10 +32,11 @@ class CreateAccountViewController: UIViewController, UIGestureRecognizerDelegate
     }
     
     @IBAction func CreateAccount(_ sender: UIButton) {
-        if PassWrod1FD.text != PassWrod2FD.text {
+        guard PassWrod1FD.text == PassWrod2FD.text else {
             print("两次输入密码不同")
             return
         }
+
         
         guard let password = PassWrod1FD.text, password != "" else {
             return
@@ -43,6 +44,8 @@ class CreateAccountViewController: UIViewController, UIGestureRecognizerDelegate
         
         if false == Wallet.NewAcc(auth: password) {
             return
+        } else {
+            print("\(String(describing: Wallet.WInst.did))")
         }
 
         self.performSegue(withIdentifier: "CreateSuccessSeg", sender: self)
