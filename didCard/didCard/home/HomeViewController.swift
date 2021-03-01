@@ -4,12 +4,15 @@
 //
 //  Created by 郭晓芙 on 2021/2/3.
 //
-
+import Foundation
 import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var HomeBackground: UIView!
     @IBOutlet weak var IDCardView: UIView!
+    @IBOutlet weak var QRButton: UIButton!
+    @IBOutlet weak var ClickToUnlock: UILabel!
+    @IBOutlet weak var DidString: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,19 +21,29 @@ class HomeViewController: UIViewController {
         
         HomeBackground.layer.insertSublayer(setGradualChangColor(frame: HomeBackground.bounds), at: 0)
         HomeBackground.layer.mask = configRectCorner(view: HomeBackground, corner: [.bottomLeft, .bottomRight] , radii: CGSize(width: 100, height: 100))
-    
         IDCardView.layer.contents = UIImage(named: "bg")?.cgImage
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(setDidName(_:)), name: NSNotification.Name(rawValue: "ACCOUNT_CREATED"), object: nil)
+        DidString.text = Wallet.WInst.did
         
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("账号有没有")
-        print(String(Wallet.WInst.hasAccount))
-        print(String(Wallet.WInst.did ?? "没有"))
-        if !Wallet.WInst.hasAccount {
+
+
+        if Wallet.WInst.did == nil {
             self.showCreateDialog()
             return
+        }
+        
+    }
+    
+    @objc func setDidName(_ notification: Notification?){
+        DispatchQueue.main.async {
+            NSLog("======>\(Wallet.WInst.walletJSON ?? "-----")")
+            self.DidString.text = Wallet.WInst.did
         }
     }
     
@@ -40,7 +53,8 @@ class HomeViewController: UIViewController {
 
     
     @IBAction func UnlockQRCodeBtn(_ sender: UIButton) {
-//        self.performSegue(withIdentifier: "UnlockSeg", sender: self)
+
+        self.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
     }
     
     func setGradualChangColor(frame: CGRect) -> CAGradientLayer {
@@ -68,5 +82,17 @@ class HomeViewController: UIViewController {
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPasswordSIG"{
+            let vc = segue.destination as! QRCodeViewController
+            
+            vc.delegate = {
+                DispatchQueue.main.async {
+                    self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
+                    self.ClickToUnlock.isHidden = true
+                }
+            }
+        }
+    
+    }
 }
-

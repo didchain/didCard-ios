@@ -217,7 +217,6 @@
                                         <state key="normal" backgroundImage="qqr"/>
                                         <connections>
                                             <action selector="UnlockQRCodeBtn:" destination="gm5-8B-7g0" eventType="touchUpInside" id="jt1-vX-Y4u"/>
-                                            <segue destination="ylx-hy-Z9e" kind="presentation" id="yiL-Sx-I3h"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击解锁二维码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGh-RH-dC5">
@@ -275,10 +274,14 @@
                     <navigationItem key="navigationItem" title="区块链身份证" id="YkR-ke-mDB"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="ClickToUnlock" destination="KGh-RH-dC5" id="ajc-be-gpy"/>
+                        <outlet property="DidString" destination="TPo-28-5zo" id="J1I-ll-rl3"/>
                         <outlet property="HomeBackground" destination="dlV-8j-15G" id="7CH-qt-oH2"/>
                         <outlet property="HomeTabBar" destination="dig-Hq-ShI" id="eos-AZ-H38"/>
                         <outlet property="IDCardView" destination="HI5-B0-6Qx" id="1hW-FS-42P"/>
+                        <outlet property="QRButton" destination="9dy-bp-Hy5" id="seR-1l-fHb"/>
                         <segue destination="BC2-cR-lxq" kind="presentation" identifier="CreateAccountSegID" animates="NO" modalPresentationStyle="overFullScreen" id="ihn-KL-6ZC"/>
+                        <segue destination="ylx-hy-Z9e" kind="presentation" identifier="ShowPasswordSIG" id="c1Z-LW-U0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ii-Jg-kaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -334,11 +337,13 @@
                                             <color key="titleColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="Unlock:" destination="ylx-hy-Z9e" eventType="touchUpInside" id="bVF-IS-W78"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1133,7 +1138,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <state key="normal" backgroundImage="nexts_icon"/>
                                                         <connections>
-                                                            <segue destination="T1z-zL-mVe" kind="presentation" id="Yp3-cq-Z1f"/>
+                                                            <segue destination="VFz-RP-lt7" kind="show" id="vsq-ha-qKN"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1335,11 +1340,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="T1z-zL-mVe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sc9-c5-K0x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKo-Si-jrd">
-                                <rect key="frame" x="52" y="230" width="310" height="204"/>
+                                <rect key="frame" x="52" y="274" width="310" height="204"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRZ-rr-Fvk">
                                         <rect key="frame" x="117.5" y="157" width="75" height="32"/>
@@ -1376,7 +1381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yiw-bF-Jeb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4460.8695652173919" y="-1357.3660714285713"/>
+            <point key="canvasLocation" x="4491" y="-899"/>
         </scene>
         <!--修改密码-->
         <scene sceneID="XSL-kQ-fGG">
@@ -1476,6 +1481,136 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSa-cn-lMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3551" y="127"/>
+        </scene>
+        <!--身份证号-->
+        <scene sceneID="Har-Zs-5Cs">
+            <objects>
+                <viewController id="VFz-RP-lt7" customClass="AccountDetailViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AlV-U7-KGo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-9f-eOi">
+                                <rect key="frame" x="40" y="168" width="334" height="414"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8r-1z-i26">
+                                        <rect key="frame" x="33" y="19" width="58" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="68v-0x-bix"/>
+                                            <constraint firstAttribute="height" constant="20" id="hYu-Yg-mH7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <color key="textColor" red="0.70980392156862748" green="0.71372549019607845" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="didjQMQ4QvhGmpmydwAKVUhGre4wDtyd1Px91SALmsp7tN" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewi-vF-L1W">
+                                        <rect key="frame" x="33" y="40" width="278.5" height="56.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ewi-vF-L1W" secondAttribute="height" multiplier="133:27" id="nvn-vS-5m2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.047058823529411764" green="0.070588235294117646" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQN-Gp-Gqz">
+                                        <rect key="frame" x="33" y="103.5" width="268" height="1"/>
+                                        <color key="backgroundColor" red="0.70980392160000005" green="0.71372549019999998" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="i3f-kY-gEh"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2UQ-LK-j6u">
+                                        <rect key="frame" x="33" y="124.5" width="268" height="268"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="2UQ-LK-j6u" secondAttribute="height" multiplier="1:1" id="Fq6-EG-dz7"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="M8r-1z-i26" firstAttribute="leading" secondItem="GG4-9f-eOi" secondAttribute="leading" constant="33" id="1Us-CE-dZS"/>
+                                    <constraint firstAttribute="trailing" secondItem="2UQ-LK-j6u" secondAttribute="trailing" constant="33" id="5uL-Od-ehk"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M8r-1z-i26" secondAttribute="trailing" constant="20" symbolic="YES" id="6e5-37-5ij"/>
+                                    <constraint firstAttribute="trailing" secondItem="aQN-Gp-Gqz" secondAttribute="trailing" constant="33" id="9Hu-2m-fSK"/>
+                                    <constraint firstItem="aQN-Gp-Gqz" firstAttribute="top" secondItem="Ewi-vF-L1W" secondAttribute="bottom" constant="7" id="GUW-7D-OPk"/>
+                                    <constraint firstItem="M8r-1z-i26" firstAttribute="top" secondItem="GG4-9f-eOi" secondAttribute="top" constant="19" id="HjC-Ym-TLA"/>
+                                    <constraint firstItem="Ewi-vF-L1W" firstAttribute="top" secondItem="M8r-1z-i26" secondAttribute="bottom" constant="1" id="Puf-8o-LAv"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ewi-vF-L1W" secondAttribute="trailing" constant="20" symbolic="YES" id="TQ9-Jx-Zgv"/>
+                                    <constraint firstItem="2UQ-LK-j6u" firstAttribute="leading" secondItem="GG4-9f-eOi" secondAttribute="leading" constant="33" id="aTT-Wq-Dhk"/>
+                                    <constraint firstItem="2UQ-LK-j6u" firstAttribute="top" secondItem="aQN-Gp-Gqz" secondAttribute="bottom" constant="20" id="iXj-oJ-me2"/>
+                                    <constraint firstItem="Ewi-vF-L1W" firstAttribute="leading" secondItem="GG4-9f-eOi" secondAttribute="leading" constant="33" id="jFX-6b-vDT"/>
+                                    <constraint firstAttribute="width" secondItem="GG4-9f-eOi" secondAttribute="height" multiplier="297:368" id="wAL-XF-vsS"/>
+                                    <constraint firstItem="aQN-Gp-Gqz" firstAttribute="leading" secondItem="GG4-9f-eOi" secondAttribute="leading" constant="33" id="whH-U3-uk0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zu8-JZ-Uai">
+                                <rect key="frame" x="26" y="669" width="362" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYY-ur-8ZK">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
+                                        <color key="backgroundColor" red="0.96078431369999995" green="0.78823529410000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="分享">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpg-F0-nb3">
+                                        <rect key="frame" x="187" y="0.0" width="175" height="44"/>
+                                        <color key="backgroundColor" red="0.047058823530000002" green="0.070588235289999995" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="保存">
+                                            <color key="titleColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97647058823529409" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="q2O-2q-RpR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Phw-Hd-gHz"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Phw-Hd-gHz" firstAttribute="trailing" secondItem="zu8-JZ-Uai" secondAttribute="trailing" constant="26" id="9V8-Nh-bMi"/>
+                            <constraint firstItem="Phw-Hd-gHz" firstAttribute="bottom" secondItem="zu8-JZ-Uai" secondAttribute="bottom" constant="100" id="ALn-ag-WZq"/>
+                            <constraint firstItem="GG4-9f-eOi" firstAttribute="leading" secondItem="Phw-Hd-gHz" secondAttribute="leading" constant="40" id="GhH-Y0-10T"/>
+                            <constraint firstItem="GG4-9f-eOi" firstAttribute="top" secondItem="Phw-Hd-gHz" secondAttribute="top" constant="80" id="ZNr-Yc-455"/>
+                            <constraint firstItem="Phw-Hd-gHz" firstAttribute="trailing" secondItem="GG4-9f-eOi" secondAttribute="trailing" constant="40" id="kVt-6V-WNw"/>
+                            <constraint firstItem="zu8-JZ-Uai" firstAttribute="leading" secondItem="Phw-Hd-gHz" secondAttribute="leading" constant="26" id="vPC-KH-Xn6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="身份证号" id="ipC-gm-uN5"/>
+                    <connections>
+                        <outlet property="QRCodeImageView" destination="2UQ-LK-j6u" id="spu-BW-SiN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXb-aE-J4u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4379.7101449275369" y="-223.66071428571428"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="o0R-bv-Vck">
@@ -1972,7 +2107,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyB-0I-x0p">
-                                <rect key="frame" x="18" y="698" width="377" height="48"/>
+                                <rect key="frame" x="18" y="649" width="377" height="48"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DyB-0I-x0p" secondAttribute="height" multiplier="377:48" id="5Ta-cN-Rjj"/>
@@ -1989,7 +2124,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yt-GB-PNJ">
-                                <rect key="frame" x="190.5" y="758" width="33" height="23"/>
+                                <rect key="frame" x="190.5" y="709" width="33" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="Rc0-ek-M3G"/>
                                     <constraint firstAttribute="width" secondItem="2yt-GB-PNJ" secondAttribute="height" multiplier="33:23" id="cvn-6E-pU8"/>
@@ -2005,7 +2140,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKw-Kp-EgH">
-                                <rect key="frame" x="191" y="783" width="32" height="2"/>
+                                <rect key="frame" x="191" y="734" width="32" height="2"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="1bz-37-z3V"/>
@@ -2149,10 +2284,10 @@
             </objects>
             <point key="canvasLocation" x="2139.130434782609" y="-1045.3125"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CreateUI Navigation Controller-->
         <scene sceneID="gcR-oA-EcN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="BC2-cR-lxq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="BC2-cR-lxq" customClass="CreateUINavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DEV-fa-Dqi">
@@ -2172,7 +2307,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="fuW-uD-Y9n"/>
         <segue reference="Weg-f5-cHC"/>
-        <segue reference="sT4-y6-ium"/>
+        <segue reference="U1B-i2-QBy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
     <resources>

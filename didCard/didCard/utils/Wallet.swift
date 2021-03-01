@@ -9,13 +9,16 @@ import Foundation
 import IosLib
 import SwiftyJSON
 import CoreData
+import UIKit
+import CoreImage.CIFilterBuiltins
 
 class Wallet: NSObject {
     var did:String?
     var walletJSON:String?
-    
     var coreData:CDWallet?
-    
+    var qrCodeImage:UIImage?
+    var qrCodeSignImage:UIImage?
+    var isLocked:Bool = true
     var hasAccount:Bool = true
     
     public static var WInst = Wallet()
@@ -23,16 +26,20 @@ class Wallet: NSObject {
     let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     
     override init() {
-        
         super.init()
-        var core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet
-        guard let jsonStr = core_data!.walletJSON, jsonStr != "" else {
-            hasAccount = false
+        guard let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet, core_data.walletJSON != nil else {
+            self.hasAccount = false
+            return
+        }
+
+        guard let jsonStr = core_data.walletJSON, jsonStr != "" else {
             return
         }
         
-        self.did = core_data!.did
-        self.walletJSON = core_data!.walletJSON
+        self.did = core_data.did
+        self.walletJSON = core_data.walletJSON
+        self.qrCodeImage = DataShareManager.sharedInstance.generateQRCode(from: self.walletJSON!)
+
         coreData = core_data
     }
     
@@ -43,6 +50,10 @@ class Wallet: NSObject {
         print("jsonData is \(jsonData)")
         populateWallet(data: jsonData)
         self.WInst.hasAccount = true
+        
+        NSLog("====222==>\(WInst.walletJSON ?? "-----")")
+        let not = Notification.init(name: Notification.Name("ACCOUNT_CREATED"))
+        NotificationCenter.default.post(not)
         return true
     }
     
@@ -55,30 +66,79 @@ class Wallet: NSObject {
         return true
     }
     
+    public static func UnlockAcc(auth: String) -> Bool {
+        let time_stamp: Int64 = Date().time_stamp
+        let location = DataShareManager.sharedInstance.requestLocation()
+        let lang: Double = location["latitude"] ?? 0
+        let long: Double = location["longitude"] ?? 0
+        var jsonData: [String: Any] = [:]
+        jsonData["did"] = self.WInst.did
+        jsonData["latitude"] = lang
+        jsonData["longitude"] = long
+        jsonData["time_stamp"] = time_stamp
+
+        let data = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
+        let jsonMsg: String = String(data: data!, encoding: .utf8)!
+        
+//        print("WInst.walletJSON\(WInst.walletJSON)")
+        
+        if IosLibIsOpen() {
+            print("wallet is open")
+        } else {
+            guard IosLibLoadCard(WInst.walletJSON) else {
+                print("load card faild")
+                return false
+            }
+            
+            guard IosLibOpen(auth) else {
+                print("can not open wallet")
+                return false
+            }
+        }
+        
+        guard let signReturnData = IosLibSign(jsonMsg) else {
+            print("sign failed")
+            return false
+        }
+        
+        let signString = signReturnData.base64EncodedString()
+        jsonData["signature"] = signString
+        let qrData = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
+        let qrString: String = String(data: qrData!, encoding: .utf8)!
+        let qrImg = DataShareManager.sharedInstance.generateQRCode(from: qrString)
+        self.WInst.isLocked = false
+        self.WInst.qrCodeSignImage = qrImg
+        
+        return true
+    }
+    
     public func initByJson(_ jsonData:Data){
         let jsonObj = JSON(jsonData)
         self.did = jsonObj["did"].string
-        self.walletJSON = jsonObj["walletJSON"].string
+        self.walletJSON = jsonObj.string
         
         print("init by json \(String(describing: self.did))")
+        print("init by json \(String(describing: self.walletJSON))")
     }
     
     private static func populateWallet(data: Data) {
         WInst.initByJson(data)
 
-        guard let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet else { return }
-        
-        print("findentity\(core_data)")
-        
-        core_data.setValue(String(data: data, encoding: .utf8), forKey: "walletJSON")
-        core_data.setValue(WInst.did, forKey: "did")
-//        core_data.walletJSON = String(data: data, encoding: .utf8)
-//        core_data.did = WInst.did
-
+        let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet
+            core_data!.walletJSON = String(data: data, encoding: .utf8)
+            core_data!.did = WInst.did
         WInst.coreData = core_data
         
         DataShareManager.sharedInstance.saveContext()
         
     }
     
+}
+
+extension Date {
+    var time_stamp: Int64 {
+        let timeInterval = self.timeIntervalSince1970
+        let time_stamp = Int64(timeInterval)
+        return time_stamp
+    }
 }

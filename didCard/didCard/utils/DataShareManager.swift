@@ -7,8 +7,9 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
-class DataShareManager: NSObject {
+class DataShareManager: NSObject, CLLocationManagerDelegate {
     
     public static var sharedInstance = DataShareManager()
     
@@ -23,6 +24,8 @@ class DataShareManager: NSObject {
         return container
     }()
     
+    lazy var manageedContext = self.persistentContainer.viewContext
+    
     // MARK: - NSManagedObject
     
     func findEntity(forEntityName:String) -> NSManagedObject? {
@@ -30,17 +33,21 @@ class DataShareManager: NSObject {
         let fetchRequest =
             NSFetchRequest<NSFetchRequestResult>(entityName: forEntityName)
         fetchRequest.fetchLimit = 1
-        let result: NSManagedObject?
+//        var result: NSManagedObject?
+    
         do {
             let ret = try managedContext.fetch(fetchRequest)
-            return ret.last as! NSManagedObject?
+            
+            guard let result = ret.last as? NSManagedObject else {
+                let entity = NSEntityDescription.entity(forEntityName: forEntityName, in: managedContext)!
+                return NSManagedObject(entity: entity, insertInto: managedContext)
+            }
+
+            return result
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
-            result = nil
         }
-//        let entity = NSEntityDescription.entity(forEntityName: forEntityName, in: managedContext)!
-//        let result = NSManagedObject(entity: entity, insertInto: managedContext)
-        return result
+        return nil
     }
 
     // MARK: - Core Data Saving support
@@ -55,7 +62,50 @@ class DataShareManager: NSObject {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }}
+    }
+    
+    func generateQRCode(from message: String) -> UIImage? {
+            
+            guard let data = message.data(using: .utf8) else{
+                    return nil
+            }
+            
+            guard let qr = CIFilter(name: "CIQRCodeGenerator",
+                                    parameters: ["inputMessage":
+                                    data, "inputCorrectionLevel":"M"]) else{
+                    return nil
+            }
+            
+            guard let qrImage = qr.outputImage?.transformed(by: CGAffineTransform(scaleX: 5, y: 5)) else{
+                    return nil
+            }
+            let context = CIContext()
+            let cgImage = context.createCGImage(qrImage, from: qrImage.extent)
+            let uiImage = UIImage(cgImage: cgImage!)
+            return uiImage
+    }
+    
+    func requestLocation() -> [String: Double] {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        var data: [String: Double] = [:]
+        
+        guard let mylocation:CLLocationCoordinate2D = locationManager.location?.coordinate else {
+            return data
+        }
+        
+        data["latitude"] = mylocation.latitude
+        data["longitude"] = mylocation.longitude
+        print("latitude && longitude \(data)")
+    
+        return data
+    }
+    
+}
 extension NSManagedObject {
     
 }

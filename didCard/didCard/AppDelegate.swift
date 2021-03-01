@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if !Wallet.WInst.hasAccount {
 ////            initialViewController = mainStoryboard.instantiateInitialViewController()!
 //            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-//        } else {
+//        }
+//        else {
 //            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "CreateVC")
 //        }
 //
