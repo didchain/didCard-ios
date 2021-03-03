@@ -18,4 +18,11 @@ class BackUpViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func SaveQRCode(_ sender: UIButton) {
+        guard let qrImg:UIImage = Wallet.WInst.qrCodeImage else {
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(qrImg, nil, nil, nil)
+        self.dismiss(animated: true, completion: nil)
+    }
 }

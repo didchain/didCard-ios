@@ -8,6 +8,7 @@ import Foundation
 import UIKit
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var TintText: UILabel!
     @IBOutlet weak var HomeBackground: UIView!
     @IBOutlet weak var IDCardView: UIView!
     @IBOutlet weak var QRButton: UIButton!
@@ -31,8 +32,6 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-
         if Wallet.WInst.did == nil {
             self.showCreateDialog()
             return
@@ -42,8 +41,13 @@ class HomeViewController: UIViewController {
     
     @objc func setDidName(_ notification: Notification?){
         DispatchQueue.main.async {
-            NSLog("======>\(Wallet.WInst.walletJSON ?? "-----")")
+//            NSLog("======>\(Wallet.WInst.walletJSON ?? "-----")")
             self.DidString.text = Wallet.WInst.did
+            if Wallet.WInst.isLocked == false {
+                self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
+                self.ClickToUnlock.isHidden = true
+                self.TintText.isHidden = true
+            }
         }
     }
     
@@ -53,8 +57,9 @@ class HomeViewController: UIViewController {
 
     
     @IBAction func UnlockQRCodeBtn(_ sender: UIButton) {
-
-        self.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
+        if Wallet.WInst.isLocked == true {
+            self.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
+        }
     }
     
     func setGradualChangColor(frame: CGRect) -> CAGradientLayer {
@@ -90,6 +95,7 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
                     self.ClickToUnlock.isHidden = true
+                    self.TintText.isHidden = true
                 }
             }
         }

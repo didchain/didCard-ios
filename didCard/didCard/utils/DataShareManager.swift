@@ -89,9 +89,11 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
         var data: [String: Double] = [:]
         
         guard let mylocation:CLLocationCoordinate2D = locationManager.location?.coordinate else {

@@ -36,6 +36,8 @@ class Wallet: NSObject {
             return
         }
         
+        
+        
         self.did = core_data.did
         self.walletJSON = core_data.walletJSON
         self.qrCodeImage = DataShareManager.sharedInstance.generateQRCode(from: self.walletJSON!)
@@ -49,9 +51,7 @@ class Wallet: NSObject {
         }
         print("jsonData is \(jsonData)")
         populateWallet(data: jsonData)
-        self.WInst.hasAccount = true
-        
-        NSLog("====222==>\(WInst.walletJSON ?? "-----")")
+        _ = UnlockAcc(auth: auth)
         let not = Notification.init(name: Notification.Name("ACCOUNT_CREATED"))
         NotificationCenter.default.post(not)
         return true
@@ -62,7 +62,9 @@ class Wallet: NSObject {
             return false
         }
         populateWallet(data: Data(json.utf8))
-        
+        let not = Notification.init(name: Notification.Name("ACCOUNT_CREATED"))
+        NotificationCenter.default.post(not)
+        _ = UnlockAcc(auth: auth)
         return true
     }
     
@@ -115,8 +117,11 @@ class Wallet: NSObject {
     public func initByJson(_ jsonData:Data){
         let jsonObj = JSON(jsonData)
         self.did = jsonObj["did"].string
-        self.walletJSON = jsonObj.string
-        
+        let jsonString: String = String(data: jsonData, encoding: .utf8)!
+        self.walletJSON = jsonString
+        let img: UIImage = DataShareManager.sharedInstance.generateQRCode(from: jsonString)!
+        self.qrCodeImage = img
+        self.isLocked = false
         print("init by json \(String(describing: self.did))")
         print("init by json \(String(describing: self.walletJSON))")
     }
@@ -128,9 +133,8 @@ class Wallet: NSObject {
             core_data!.walletJSON = String(data: data, encoding: .utf8)
             core_data!.did = WInst.did
         WInst.coreData = core_data
-        
         DataShareManager.sharedInstance.saveContext()
-        
+
     }
     
 }

@@ -20,4 +20,10 @@ class AccountDetailViewController: UIViewController {
         QRCodeImageView.image = Wallet.WInst.qrCodeImage
     }
     
+    @IBAction func SaveQRImg(_ sender: UIButton) {
+        guard let qrImg:UIImage = Wallet.WInst.qrCodeImage else {
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(qrImg, nil, nil, nil)
+    }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftyJSON
 
 class ImportViewController: UIViewController {
     
@@ -46,10 +47,6 @@ class ImportViewController: UIViewController {
 
             captureSession.startRunning()
             
-            // Move the message label and top bar to the front
-//            view.bringSubviewToFront(messageLabel)
-//            view.bringSubviewToFront(topBar)
-            
             qrCodeFrameView = UIView()
             
             if let qrcodeFrameView = qrCodeFrameView {
@@ -65,13 +62,18 @@ class ImportViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     @IBAction func ImportPhotoButton(_ sender: UIButton) {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self
         vc.allowsEditing = false
         present(vc, animated: true, completion: nil)
-
     }
     
 }
@@ -105,6 +107,21 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             return
         } else {
             print(codeStr)
+            let codeObj:Data = codeStr.data(using: .utf8)!
+            let codeJson = JSON(codeObj)
+            
+            showInputDialog(title: "验证密码",
+                            message: codeJson["did"].string!,
+                            textPlaceholder: "请输入密码",
+                            actionText: "确定",
+                            cancelText:  "取消",
+                            cancelHandler: nil) { (text: String?) in
+                if Wallet.ImportAcc(auth: text!, json: codeStr) == true {
+                    print("导入成功")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+            
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -127,14 +144,49 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                let alert = UIAlertController(title: "QR Code", message: metadataObj.stringValue, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "重新扫描", style: .default, handler: nil))
-                
-                present(alert, animated: true, completion: nil)
-//                messageLabel.text = metadataObj.stringValue
-                print(metadataObj.stringValue!)
+                print(String(metadataObj.stringValue!))
+                let data: Data = ((metadataObj.stringValue!).data(using: .utf8))!
+                let json = JSON(data)
+                showInputDialog(title: "验证密码",
+                                message: json["did"].string!,
+                                textPlaceholder: "请输入密码",
+                                actionText: "确定",
+                                cancelText:  "取消",
+                                cancelHandler: nil) { (text: String?) in
+                    if Wallet.ImportAcc(auth: text!, json: metadataObj.stringValue!) == true {
+                        print("导入成功")
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
             }
         }
+    }
+
+}
+
+extension UIViewController {
+    func showInputDialog(title: String,
+                         message: String,
+                         textPlaceholder: String,
+                         actionText: String,
+                         cancelText: String,
+                         cancelHandler: ((UIAlertAction) -> Void)?,
+                         actionHandler: ((_ text: String?) -> Void)?
+                         ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = textPlaceholder
+        }
+        alert.addAction(UIAlertAction(title: cancelText, style: .cancel, handler: cancelHandler))
+        alert.addAction(UIAlertAction(title: actionText, style: .destructive, handler: { (action: UIAlertAction) in
+            guard let textField = alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

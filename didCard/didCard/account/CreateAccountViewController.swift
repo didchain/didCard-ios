@@ -37,7 +37,6 @@ class CreateAccountViewController: UIViewController, UIGestureRecognizerDelegate
             return
         }
 
-        
         guard let password = PassWrod1FD.text, password != "" else {
             return
         }
@@ -51,6 +50,6 @@ class CreateAccountViewController: UIViewController, UIGestureRecognizerDelegate
         self.performSegue(withIdentifier: "CreateSuccessSeg", sender: self)
     }
     
-        
+    
 }
 
