@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDSetting" representedClassName="CDSetting" syncable="YES">
+        <attribute name="useFaceID" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="withoutAuth" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <entity name="CDWallet" representedClassName="CDWallet" isAbstract="YES" syncable="YES">
         <attribute name="did" optional="YES" attributeType="String"/>
         <attribute name="walletJSON" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="CDWallet" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="CDSetting" positionX="-63" positionY="0" width="128" height="59"/>
     </elements>
 </model>

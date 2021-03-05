@@ -20,6 +20,13 @@
 		086DF7B125E8A4400068DC18 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7B025E8A4400068DC18 /* AccountDetailViewController.swift */; };
 		086DF7B325E8DAAF0068DC18 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086DF7B225E8DAAF0068DC18 /* CoreLocation.framework */; };
 		086DF7B725ECEA4C0068DC18 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7B625ECEA4C0068DC18 /* Utils.swift */; };
+		086DF7BD25EF75610068DC18 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7BC25EF75610068DC18 /* Setting.swift */; };
+		086DF7C825EF8A110068DC18 /* CDSetting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7C625EF8A110068DC18 /* CDSetting+CoreDataClass.swift */; };
+		086DF7C925EF8A110068DC18 /* CDSetting+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7C725EF8A110068DC18 /* CDSetting+CoreDataProperties.swift */; };
+		086DF7CB25F0BA0A0068DC18 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086DF7CA25F0BA0A0068DC18 /* LocalAuthentication.framework */; };
+		086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086DF7CC25F0DA8F0068DC18 /* Security.framework */; };
+		086DF7D525F1D7F40068DC18 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D425F1D7F40068DC18 /* KeychainWrapper.swift */; };
+		086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */; };
 		08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
 		08CC9C4025E0A79B00E07589 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB0D4725CCF9910033B373 /* iosLib.framework */; };
@@ -64,6 +71,13 @@
 		086DF7B025E8A4400068DC18 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 		086DF7B225E8DAAF0068DC18 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		086DF7B625ECEA4C0068DC18 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		086DF7BC25EF75610068DC18 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		086DF7C625EF8A110068DC18 /* CDSetting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSetting+CoreDataClass.swift"; sourceTree = "<group>"; };
+		086DF7C725EF8A110068DC18 /* CDSetting+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSetting+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		086DF7CA25F0BA0A0068DC18 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		086DF7CC25F0DA8F0068DC18 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		086DF7D425F1D7F40068DC18 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = didCard/Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		69694E1225C9124600309185 /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1625C9127400309185 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086DF7CB25F0BA0A0068DC18 /* LocalAuthentication.framework in Frameworks */,
+				086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */,
 				086DF7B325E8DAAF0068DC18 /* CoreLocation.framework in Frameworks */,
 				08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */,
 				08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */,
@@ -118,14 +134,27 @@
 		081ACEC825D115C900C23B3C /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				086DF7D125F1D7BF0068DC18 /* keychain */,
+				086DF7C625EF8A110068DC18 /* CDSetting+CoreDataClass.swift */,
+				086DF7C725EF8A110068DC18 /* CDSetting+CoreDataProperties.swift */,
 				0835E4FC25E636F600149D68 /* CDWallet+CoreDataClass.swift */,
 				0835E4FD25E636F600149D68 /* CDWallet+CoreDataProperties.swift */,
 				081ACEC425D1157B00C23B3C /* DIDBase.xcdatamodeld */,
 				081ACEC125D1151E00C23B3C /* Wallet.swift */,
+				086DF7BC25EF75610068DC18 /* Setting.swift */,
 				0835E4ED25E5DA4E00149D68 /* DataShareManager.swift */,
 				086DF7B625ECEA4C0068DC18 /* Utils.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		086DF7D125F1D7BF0068DC18 /* keychain */ = {
+			isa = PBXGroup;
+			children = (
+				086DF7D425F1D7F40068DC18 /* KeychainWrapper.swift */,
+				086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */,
+			);
+			path = keychain;
 			sourceTree = "<group>";
 		};
 		69694E1125C9120B00309185 /* account */ = {
@@ -178,6 +207,8 @@
 		69EB0D4625CCF9910033B373 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				086DF7CC25F0DA8F0068DC18 /* Security.framework */,
+				086DF7CA25F0BA0A0068DC18 /* LocalAuthentication.framework */,
 				086DF7B225E8DAAF0068DC18 /* CoreLocation.framework */,
 				08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */,
 				69EB0D4725CCF9910033B373 /* iosLib.framework */,
@@ -284,9 +315,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				081ACEC625D1157B00C23B3C /* DIDBase.xcdatamodeld in Sources */,
+				086DF7C925EF8A110068DC18 /* CDSetting+CoreDataProperties.swift in Sources */,
 				081ACEC225D1151E00C23B3C /* Wallet.swift in Sources */,
 				69694E1D25C912BC00309185 /* ImportViewController.swift in Sources */,
 				081ACEB625CBE28300C23B3C /* CreateNewCardViewController.swift in Sources */,
+				086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */,
+				086DF7BD25EF75610068DC18 /* Setting.swift in Sources */,
 				69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */,
 				69711D7925B7F47200B83E6C /* ViewController.swift in Sources */,
 				69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */,
@@ -295,6 +329,7 @@
 				086DF7B125E8A4400068DC18 /* AccountDetailViewController.swift in Sources */,
 				0835E4EE25E5DA4E00149D68 /* DataShareManager.swift in Sources */,
 				081ACEA525CA2FAC00C23B3C /* HomeViewController.swift in Sources */,
+				086DF7C825EF8A110068DC18 /* CDSetting+CoreDataClass.swift in Sources */,
 				0835E4FF25E636F600149D68 /* CDWallet+CoreDataProperties.swift in Sources */,
 				0835E4FE25E636F600149D68 /* CDWallet+CoreDataClass.swift in Sources */,
 				081ACEB925CBE30A00C23B3C /* IdentityManagementViewController.swift in Sources */,
@@ -302,6 +337,7 @@
 				69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */,
 				086DF7B725ECEA4C0068DC18 /* Utils.swift in Sources */,
 				081ACEB125CB881700C23B3C /* PersonalViewController.swift in Sources */,
+				086DF7D525F1D7F40068DC18 /* KeychainWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

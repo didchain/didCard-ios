@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import LocalAuthentication
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var TintText: UILabel!
@@ -37,6 +38,20 @@ class HomeViewController: UIViewController {
             return
         }
         
+        if Setting.getWithoutAuth() {
+            if !Wallet.UnlockAcc(auth: nil) {
+                print("免密解锁失败")
+                return
+            }
+        }
+        
+        if Wallet.WInst.isLocked == false {
+            self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
+            self.ClickToUnlock.isHidden = true
+            self.TintText.text = "💫点击二维码刷新"
+        }
+
+
     }
     
     @objc func setDidName(_ notification: Notification?){
@@ -44,9 +59,7 @@ class HomeViewController: UIViewController {
 //            NSLog("======>\(Wallet.WInst.walletJSON ?? "-----")")
             self.DidString.text = Wallet.WInst.did
             if Wallet.WInst.isLocked == false {
-                self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
-                self.ClickToUnlock.isHidden = true
-                self.TintText.isHidden = true
+                self.reloadWalletData()
             }
         }
     }
@@ -55,10 +68,44 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "CreateAccountSegID", sender: self)
     }
 
+    func reloadWalletData() {
+        self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
+        self.ClickToUnlock.isHidden = true
+        self.TintText.text = "💫点击二维码刷新"
+    }
     
     @IBAction func UnlockQRCodeBtn(_ sender: UIButton) {
         if Wallet.WInst.isLocked == true {
-            self.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
+            if Setting.getUseFaceID() {
+                let context = LAContext()
+                var error: NSError?
+                if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                    let reason = "是否允许App使用您的\(context.biometryType)"
+                    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self](success, authError) in
+                        DispatchQueue.main.async {
+                            if success {
+                                if Wallet.UnlockAcc(auth: nil) {
+                                    self?.reloadWalletData()
+                                }
+                            } else {
+                                let ac = UIAlertController(title: "验证失败", message: "请重试", preferredStyle: .alert)
+                                ac.addAction(UIAlertAction(title: "使用密码", style: .default, handler: { (_:UIAlertAction) in
+                                    self?.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
+                                }))
+                                ac.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
+                                self?.present(ac, animated: true, completion: nil)
+                            }
+                        }
+                    }
+                } else {
+                    let ac = UIAlertController(title: "设备不支持", message: "您的设备不支持FaceID/TouchID", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
+                    self.present(ac, animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
+                }
+            } else {
+                self.performSegue(withIdentifier: "ShowPasswordSIG", sender: self)
+            }
         }
     }
     
@@ -93,9 +140,7 @@ class HomeViewController: UIViewController {
             
             vc.delegate = {
                 DispatchQueue.main.async {
-                    self.QRButton.setBackgroundImage(Wallet.WInst.qrCodeSignImage, for: .normal)
-                    self.ClickToUnlock.isHidden = true
-                    self.TintText.isHidden = true
+                    self.reloadWalletData()
                 }
             }
         }

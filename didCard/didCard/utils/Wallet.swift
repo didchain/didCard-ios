@@ -36,8 +36,6 @@ class Wallet: NSObject {
             return
         }
         
-        
-        
         self.did = core_data.did
         self.walletJSON = core_data.walletJSON
         self.qrCodeImage = DataShareManager.sharedInstance.generateQRCode(from: self.walletJSON!)
@@ -45,11 +43,19 @@ class Wallet: NSObject {
         coreData = core_data
     }
     
+    public static func getIsUnlock() -> Bool {
+        if !IosLibLoadCard(WInst.walletJSON) {
+            print("load card faild")
+            return false
+        }
+        return IosLibIsOpen()
+    }
+    
     public static func NewAcc(auth: String) -> Bool {
         guard let jsonData = IosLibNewCard(auth) else {
             return false
         }
-        print("jsonData is \(jsonData)")
+//        print("jsonData is \(jsonData)")
         populateWallet(data: jsonData)
         _ = UnlockAcc(auth: auth)
         let not = Notification.init(name: Notification.Name("ACCOUNT_CREATED"))
@@ -68,7 +74,16 @@ class Wallet: NSObject {
         return true
     }
     
-    public static func UnlockAcc(auth: String) -> Bool {
+    public static func DeriveAesKey(auth: String) -> Bool {
+        
+        let derive_key = IosLibDeriveAesKey(auth)
+        
+        KeychainWrapper.standard.set(derive_key, forKey: "AESKey")
+
+        return true
+    }
+    
+    public static func UnlockAcc(auth: String?) -> Bool {
         let time_stamp: Int64 = Date().time_stamp
         let location = DataShareManager.sharedInstance.requestLocation()
         let lang: Double = location["latitude"] ?? 0
@@ -80,30 +95,37 @@ class Wallet: NSObject {
         jsonData["time_stamp"] = time_stamp
 
         let data = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
-        let jsonMsg: String = String(data: data!, encoding: .utf8)!
-        
-//        print("WInst.walletJSON\(WInst.walletJSON)")
-        
+        let jsonMsg: String? = String.init(data: data!, encoding: .utf8)
+
+        if !IosLibLoadCard(WInst.walletJSON) {
+            print("load card faild")
+            return false
+        }
         if IosLibIsOpen() {
             print("wallet is open")
         } else {
-            guard IosLibLoadCard(WInst.walletJSON) else {
-                print("load card faild")
-                return false
+            if auth == nil {
+                if let AesKey = KeychainWrapper.standard.string(forKey: "AESKey") {
+                    if IosLibOpenWithAesKey(AesKey) != "" {
+                        print("AESKey false")
+                        return false
+                    }
+                } else {
+                    print("AESKey not in keychain")
+                    return false
+                }
+            } else {
+                if !IosLibOpen(auth) {
+                    print("can not open wallet")
+                    return false
+                }
             }
             
-            guard IosLibOpen(auth) else {
-                print("can not open wallet")
-                return false
-            }
         }
         
-        guard let signReturnData = IosLibSign(jsonMsg) else {
-            print("sign failed")
-            return false
-        }
+        let signReturnData = IosLibSign(jsonMsg)
         
-        let signString = signReturnData.base64EncodedString()
+        let signString = signReturnData
         jsonData["signature"] = signString
         let qrData = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
         let qrString: String = String(data: qrData!, encoding: .utf8)!
@@ -130,8 +152,8 @@ class Wallet: NSObject {
         WInst.initByJson(data)
 
         let core_data = DataShareManager.sharedInstance.findEntity(forEntityName: "CDWallet") as? CDWallet
-            core_data!.walletJSON = String(data: data, encoding: .utf8)
-            core_data!.did = WInst.did
+        core_data!.walletJSON = String(data: data, encoding: .utf8)
+        core_data!.did = WInst.did
         WInst.coreData = core_data
         DataShareManager.sharedInstance.saveContext()
 

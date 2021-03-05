@@ -6,27 +6,99 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class PersonalViewController: UIViewController {
 
+    @IBOutlet weak var FaceID: UISwitch!
+    @IBOutlet weak var Auth: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-
-//        let imageView1 = UIImageView()
-//        imageView1.image = UIImage(named:"girl")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Auth.isOn = Setting.getWithoutAuth()
+        FaceID.isOn = Setting.getUseFaceID()
     }
-    */
+    
+    @IBAction func Auth(_ sender: UISwitch) {
+        if sender.isOn {
+            showInputDialog(title: "验证密码",
+                            message: Wallet.WInst.did!,
+                            textPlaceholder: "请输入密码",
+                            actionText: "确定",
+                            cancelText: "取消",
+                            cancelHandler: nil) { (text: String?) in
+                if Wallet.UnlockAcc(auth: text ?? "") {
+                    if Wallet.DeriveAesKey(auth: text ?? "") {
+                        Setting.setWithoutAuth(true)
+                    }
+                }
+            }
+        } else {
+            Setting.setWithoutAuth(false)
+//            sender.setOn(false, animated: true)
+        }
+    }
+    
+    @IBAction func FaceID(_ sender: UISwitch) {
+        if sender.isOn {
+//            if Wallet.WInst.isLocked {
+            showInputDialog(title: "验证密码",
+                            message: Wallet.WInst.did!,
+                            textPlaceholder: "请输入密码",
+                            actionText: "确定",
+                            cancelText: "取消",
+                            cancelHandler: nil) { (text: String?) in
+                if Wallet.UnlockAcc(auth: text ?? "") {
+                    if !Wallet.DeriveAesKey(auth: text ?? "") {
+                        Setting.setUseFaceID(false)
+                        sender.setOn(false, animated: true)
+                        print("derive key faild")
+                        return
+                    }
+                } else {
+                    Setting.setUseFaceID(false)
+                    sender.setOn(false, animated: true)
+                    print("解锁失败")
+                    return
+                }
+            }
 
+            let context = LAContext()
+            var error: NSError?
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let reason = "是否允许App使用您的\(context.biometryType)"
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self](success, authError) in
+                    DispatchQueue.main.async {
+                        if success {
+                            Setting.setUseFaceID(true)
+                        } else {
+                            let ac = UIAlertController(title: "验证失败", message: "请重试", preferredStyle: .alert)
+                            ac.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
+                            self?.present(ac, animated: true, completion: nil)
+                            print("\(String(describing: authError))")
+                            Setting.setUseFaceID(false)
+                            sender.setOn(false, animated: true)
+                        }
+                    }
+                }
+            } else {
+                let ac = UIAlertController(title: "设备不支持", message: "您的设备不支持FaceID/TouchID", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
+                self.present(ac, animated: true, completion: nil)
+                Setting.setUseFaceID(false)
+                sender.setOn(false, animated: true)
+            }
+//            } else {
+//                Setting.setUseFaceID(true)
+//            }
+        } else {
+            Setting.setUseFaceID(false)
+        }
+        
+    }
+    
 }

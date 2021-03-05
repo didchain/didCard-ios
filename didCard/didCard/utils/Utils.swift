@@ -12,7 +12,7 @@ class Utils: NSObject {
         super.init()
     }
 
-    public func PostNoti(_ namedNoti: Notification){
+    public func PostNoti(_ namedNoti: Notification) {
         NotificationCenter.default.post(namedNoti)
     }
     
