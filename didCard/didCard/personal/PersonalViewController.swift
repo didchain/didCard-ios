@@ -12,6 +12,7 @@ class PersonalViewController: UIViewController {
 
     @IBOutlet weak var FaceID: UISwitch!
     @IBOutlet weak var Auth: UISwitch!
+    @IBOutlet weak var did: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class PersonalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        did.text = Wallet.WInst.did
         Auth.isOn = Setting.getWithoutAuth()
         FaceID.isOn = Setting.getUseFaceID()
     }

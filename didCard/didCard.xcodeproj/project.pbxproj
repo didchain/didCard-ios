@@ -28,7 +28,6 @@
 		086DF7D525F1D7F40068DC18 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D425F1D7F40068DC18 /* KeychainWrapper.swift */; };
 		086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */; };
 		08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
-		08CC9C4025E0A79B00E07589 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB0D4725CCF9910033B373 /* iosLib.framework */; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
@@ -43,20 +42,6 @@
 		69711D8D25B7F4C700B83E6C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 69711D8C25B7F4C700B83E6C /* Cartfile */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		08CC9C4125E0A79B00E07589 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				08CC9C4025E0A79B00E07589 /* SwiftyJSON.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		081ACEAD25CB818400C23B3C /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +53,7 @@
 		0835E4ED25E5DA4E00149D68 /* DataShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShareManager.swift; sourceTree = "<group>"; };
 		0835E4FC25E636F600149D68 /* CDWallet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDWallet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0835E4FD25E636F600149D68 /* CDWallet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDWallet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0862235D25F5C96D0060113F /* didCard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = didCard.entitlements; sourceTree = "<group>"; };
 		086DF7B025E8A4400068DC18 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 		086DF7B225E8DAAF0068DC18 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		086DF7B625ECEA4C0068DC18 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -189,6 +175,7 @@
 		69711D7325B7F47200B83E6C /* didCard */ = {
 			isa = PBXGroup;
 			children = (
+				0862235D25F5C96D0060113F /* didCard.entitlements */,
 				081ACEC825D115C900C23B3C /* utils */,
 				081ACE9E25CA2D5600C23B3C /* personal */,
 				081ACE9D25CA2D2E00C23B3C /* home */,
@@ -226,7 +213,6 @@
 				69711D6D25B7F47200B83E6C /* Sources */,
 				69711D6E25B7F47200B83E6C /* Frameworks */,
 				69711D6F25B7F47200B83E6C /* Resources */,
-				08CC9C4125E0A79B00E07589 /* Embed Frameworks */,
 				08CC9C4225E0AC6500E07589 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
@@ -484,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = didCard/didCard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
@@ -513,8 +500,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = didCard/didCard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,7 +517,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.didchain.didCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = release_card2;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = NO;

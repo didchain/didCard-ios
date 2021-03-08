@@ -88,14 +88,16 @@ class Wallet: NSObject {
         let location = DataShareManager.sharedInstance.requestLocation()
         let lang: Double = location["latitude"] ?? 0
         let long: Double = location["longitude"] ?? 0
-        var jsonData: [String: Any] = [:]
+        var jsonData: [String: String] = [:]
+        jsonData["longitude"] = String(long)
+        jsonData["latitude"] = String(lang)
+        jsonData["time_stamp"] = String(time_stamp)
         jsonData["did"] = self.WInst.did
-        jsonData["latitude"] = lang
-        jsonData["longitude"] = long
-        jsonData["time_stamp"] = time_stamp
 
-        let data = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
-        let jsonMsg: String? = String.init(data: data!, encoding: .utf8)
+        let signMsg = IosLibSignMessage(self.WInst.did, lang, long, time_stamp)
+
+//        let data = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
+//        let jsonMsg: String? = String.init(data: data!, encoding: .utf8)
 
         if !IosLibLoadCard(WInst.walletJSON) {
             print("load card faild")
@@ -122,11 +124,10 @@ class Wallet: NSObject {
             }
             
         }
-        
-        let signReturnData = IosLibSign(jsonMsg)
-        
+        print("jsonMsg\(signMsg)")
+        let signReturnData = IosLibSign(signMsg)
         let signString = signReturnData
-        jsonData["signature"] = signString
+        jsonData["sig"] = signString
         let qrData = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
         let qrString: String = String(data: qrData!, encoding: .utf8)!
         let qrImg = DataShareManager.sharedInstance.generateQRCode(from: qrString)

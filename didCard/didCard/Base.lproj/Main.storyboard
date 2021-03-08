@@ -660,9 +660,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSr-lJ-LCh">
-                                <rect key="frame" x="19" y="210" width="180" height="20"/>
+                                <rect key="frame" x="19" y="210" width="375" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="JSr-lJ-LCh" secondAttribute="height" multiplier="9:1" id="BE6-Xs-Aav"/>
+                                    <constraint firstAttribute="width" secondItem="JSr-lJ-LCh" secondAttribute="height" multiplier="9:1" constant="195" id="BE6-Xs-Aav"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Fvk-mV-OMp"/>
                                     <constraint firstAttribute="height" constant="20" id="sdr-gh-KwM"/>
                                 </constraints>
@@ -945,11 +945,12 @@
                     <connections>
                         <outlet property="Auth" destination="o6Q-1T-Kho" id="iuA-E1-t5i"/>
                         <outlet property="FaceID" destination="T9v-Y4-xE6" id="GOs-Ct-Yhi"/>
+                        <outlet property="did" destination="JSr-lJ-LCh" id="elf-Dk-Iv6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1374" y="238"/>
+            <point key="canvasLocation" x="1373.913043478261" y="237.72321428571428"/>
         </scene>
         <!--身份管理-->
         <scene sceneID="FZN-w8-awe">
@@ -1540,7 +1541,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.78823529410000004" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="分享">
+                                        <state key="normal" title="复制">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1548,6 +1549,9 @@
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="CopyDid:" destination="VFz-RP-lt7" eventType="touchUpInside" id="fKO-BN-Beb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpg-F0-nb3">
                                         <rect key="frame" x="187" y="0.0" width="175" height="44"/>

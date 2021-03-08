@@ -26,4 +26,8 @@ class AccountDetailViewController: UIViewController {
         }
         UIImageWriteToSavedPhotosAlbum(qrImg, nil, nil, nil)
     }
+    
+    @IBAction func CopyDid(_ sender: UIButton) {
+        UIPasteboard.general.string = Wallet.WInst.did
+    }
 }

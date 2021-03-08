@@ -89,7 +89,7 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
