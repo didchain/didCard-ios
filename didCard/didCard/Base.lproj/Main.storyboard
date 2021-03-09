@@ -134,7 +134,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-8j-15G">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="293"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="区块链身份证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkE-F9-fy7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="易ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkE-F9-fy7">
                                         <rect key="frame" x="27" y="69" width="146" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GkE-F9-fy7" secondAttribute="height" multiplier="146:33" id="2W2-Dl-0rZ"/>

@@ -27,7 +27,7 @@
 		086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086DF7CC25F0DA8F0068DC18 /* Security.framework */; };
 		086DF7D525F1D7F40068DC18 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D425F1D7F40068DC18 /* KeychainWrapper.swift */; };
 		086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */; };
-		08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
+		08C94BB925F6247C00A33AC4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
 		08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB0D4725CCF9910033B373 /* iosLib.framework */; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
@@ -90,7 +90,7 @@
 				086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */,
 				086DF7B325E8DAAF0068DC18 /* CoreLocation.framework in Frameworks */,
 				08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */,
-				08CC9C3F25E0A79B00E07589 /* SwiftyJSON.framework in Frameworks */,
+				08C94BB925F6247C00A33AC4 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +473,7 @@
 				CODE_SIGN_ENTITLEMENTS = didCard/didCard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -502,6 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
