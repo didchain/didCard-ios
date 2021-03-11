@@ -11,6 +11,7 @@ class AccountDetailViewController: UIViewController {
 
     @IBOutlet weak var QRCodeImageView: UIImageView!
 //    @IBOutlet weak var QRCodeView: UIView!
+    @IBOutlet weak var Did: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +19,12 @@ class AccountDetailViewController: UIViewController {
         QRCodeImageView.layer.borderColor = UIColor.init(red: 245/255, green: 201/255, blue: 92/255, alpha: 1).cgColor
 
         QRCodeImageView.image = Wallet.WInst.qrCodeImage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Did.text = Wallet.WInst.did
     }
     
     @IBAction func SaveQRImg(_ sender: UIButton) {

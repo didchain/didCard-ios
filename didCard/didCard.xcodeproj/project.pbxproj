@@ -27,8 +27,9 @@
 		086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086DF7CC25F0DA8F0068DC18 /* Security.framework */; };
 		086DF7D525F1D7F40068DC18 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D425F1D7F40068DC18 /* KeychainWrapper.swift */; };
 		086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */; };
-		08C94BB925F6247C00A33AC4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
 		08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB0D4725CCF9910033B373 /* iosLib.framework */; };
+		08F9BF2425F9AE6D00A0454E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
+		08F9BF2525F9AE6D00A0454E /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
@@ -41,6 +42,20 @@
 		69711D8425B7F47500B83E6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69711D8225B7F47500B83E6C /* LaunchScreen.storyboard */; };
 		69711D8D25B7F4C700B83E6C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 69711D8C25B7F4C700B83E6C /* Cartfile */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		08F9BF2625F9AE6D00A0454E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				08F9BF2525F9AE6D00A0454E /* SwiftyJSON.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +105,7 @@
 				086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */,
 				086DF7B325E8DAAF0068DC18 /* CoreLocation.framework in Frameworks */,
 				08CC9C4325E3BF0500E07589 /* iosLib.framework in Frameworks */,
-				08C94BB925F6247C00A33AC4 /* SwiftyJSON.framework in Frameworks */,
+				08F9BF2425F9AE6D00A0454E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +229,7 @@
 				69711D6E25B7F47200B83E6C /* Frameworks */,
 				69711D6F25B7F47200B83E6C /* Resources */,
 				08CC9C4225E0AC6500E07589 /* Carthage Copy Frameworks */,
+				08F9BF2625F9AE6D00A0454E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -473,7 +489,7 @@
 				CODE_SIGN_ENTITLEMENTS = didCard/didCard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -503,7 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
