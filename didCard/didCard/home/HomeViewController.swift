@@ -15,9 +15,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var QRButton: UIButton!
     @IBOutlet weak var ClickToUnlock: UILabel!
     @IBOutlet weak var DidString: UILabel!
+//    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+
         let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = item
         
