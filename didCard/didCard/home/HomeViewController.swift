@@ -10,20 +10,32 @@ import LocalAuthentication
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var TintText: UILabel!
+    @IBOutlet weak var ContentView: UIView!
     @IBOutlet weak var HomeBackground: UIView!
     @IBOutlet weak var IDCardView: UIView!
     @IBOutlet weak var QRButton: UIButton!
     @IBOutlet weak var ClickToUnlock: UILabel!
+    @IBOutlet weak var ServiceView: UIView!
     @IBOutlet weak var DidString: UILabel!
-//    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
-
+//        let scrollview = UIScrollView(frame: self.view.bounds)
+//
+//        scrollview.isScrollEnabled = true
+//        scrollview.bounces = true
+//        scrollview.showsVerticalScrollIndicator = false
+//        scrollview.showsHorizontalScrollIndicator = false
+//        
+//        scrollview.addSubview(ContentView)
+//        
+//        self.view.addSubview(scrollview)
+        
+        
         let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = item
         
+        HomeBackground.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: HomeBackground.bounds.height)
         HomeBackground.layer.insertSublayer(setGradualChangColor(frame: HomeBackground.bounds), at: 0)
         HomeBackground.layer.mask = configRectCorner(view: HomeBackground, corner: [.bottomLeft, .bottomRight] , radii: CGSize(width: 100, height: 100))
         IDCardView.layer.contents = UIImage(named: "bg")?.cgImage
