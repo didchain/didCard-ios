@@ -1,22 +1,23 @@
 //
-//  ImportViewController.swift
+//  ScannerViewController.swift
 //  didCard
 //
-//  Created by wesley on 2021/2/2.
+//  Created by 郭晓芙 on 2021/4/5.
 //
 
 import UIKit
 import AVFoundation
 import SwiftyJSON
+import IosLib
 
-class ImportViewController: UIViewController {
+class ScannerViewController: UIViewController {
     
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
-
-    private let supportedCodeTypes = [AVMetadataObject.ObjectType.qr]
     
+    private let supportedCodeTypes = [AVMetadataObject.ObjectType.qr]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +34,7 @@ class ImportViewController: UIViewController {
             captureSession.addOutput(captureMetadataOutput)
 
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-          
+
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -58,28 +59,27 @@ class ImportViewController: UIViewController {
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    @IBAction func ImportPhotoButton(_ sender: UIButton) {
+
+    @IBAction func ImportPhotoButton(_ sender: UIBarButtonItem) {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self
         vc.allowsEditing = false
         present(vc, animated: true, completion: nil)
     }
-    
+
 }
 
-extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-//        guard let qrcodeImg = info[.originalImage] as? UIImage else {
-//            return
-//        }
+
         if #available(iOS 13.0, *) {
             picker.navigationBar.barTintColor = .systemBackground
         }
@@ -105,18 +105,30 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             let codeObj:Data = codeStr.data(using: .utf8)!
             let codeJson = JSON(codeObj)
             
-            if codeJson["did"].exists() {
-                showInputDialog(title: "验证密码",
-                                message: codeJson["did"].string!,
+            if Wallet.WInst.isLocked {
+                showInputDialog(title: "解锁账号",
+                                message: Wallet.WInst.did!,
                                 textPlaceholder: "请输入密码",
                                 actionText: "确定",
-                                cancelText:  "取消",
+                                cancelText: "取消",
                                 cancelHandler: nil) { (text: String?) in
-                    if Wallet.ImportAcc(auth: text!, json: codeStr) == true {
-                        print("导入成功")
-                        self.dismiss(animated: true, completion: nil)
+                    if Wallet.UnlockAcc(auth: text ?? "") {
                     }
                 }
+                return
+            }
+            
+            if codeJson["random_token"].exists() && codeJson["auth_url"].exists() {
+                let randToken = codeJson["random_token"].string!
+                let authUrl = codeJson["auth_url"].string!
+                
+                let result:Bool = Utils.VerifyLogin(randToken, authUrl)
+
+                if result {
+                    showAlert(title: "", message: "登陆成功")
+
+                }
+
             }
             
         }
@@ -144,49 +156,49 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
                 print(String(metadataObj.stringValue!))
                 let data: Data = ((metadataObj.stringValue!).data(using: .utf8))!
                 let json = JSON(data)
-                if json["did"].exists() {
-                    showInputDialog(title: "验证密码",
-                                    message: json["did"].string!,
+                
+                if Wallet.WInst.isLocked {
+                    showInputDialog(title: "解锁账号",
+                                    message: Wallet.WInst.did!,
                                     textPlaceholder: "请输入密码",
                                     actionText: "确定",
-                                    cancelText:  "取消",
+                                    cancelText: "取消",
                                     cancelHandler: nil) { (text: String?) in
-                        if Wallet.ImportAcc(auth: text!, json: metadataObj.stringValue!) == true {
-                            print("导入成功")
-                            self.dismiss(animated: true, completion: nil)
+                        if Wallet.UnlockAcc(auth: text ?? "") {
+
                         }
                     }
+                    return
+
                 }
+                
+                                
+                if json["random_token"].exists() && json["auth_url"].exists() {
+                    let randToken = json["random_token"].string!
+                    let authUrl = json["auth_url"].string!
 
+                    let result:Bool = Utils.VerifyLogin(randToken, authUrl)
+
+                    if result {
+                        showAlert(title: "", message: "登陆成功")
+
+                    }
+
+                }
+                
             }
         }
     }
 
 }
 
-extension UIViewController {
-    func showInputDialog(title: String,
-                         message: String,
-                         textPlaceholder: String,
-                         actionText: String,
-                         cancelText: String,
-                         cancelHandler: ((UIAlertAction) -> Void)?,
-                         actionHandler: ((_ text: String?) -> Void)?
-                         ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addTextField { (textField: UITextField) in
-            textField.placeholder = textPlaceholder
-        }
-        alert.addAction(UIAlertAction(title: cancelText, style: .cancel, handler: cancelHandler))
-        alert.addAction(UIAlertAction(title: actionText, style: .destructive, handler: { (action: UIAlertAction) in
-            guard let textField = alert.textFields?.first else {
-                actionHandler?(nil)
-                return
-            }
-            actionHandler?(textField.text)
-        }))
+extension ScannerViewController {
+    func showAlert(title: String, message: String) {
+        let successAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        self.present(alert, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+        successAlert.addAction(okAction)
+        self.present(successAlert, animated: true, completion: nil)
     }
-
 }
+

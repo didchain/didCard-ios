@@ -1948,7 +1948,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbW-2b-iF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1374" y="-616"/>
+            <point key="canvasLocation" x="1374" y="-2144"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="vs7-WL-2z2">
@@ -2278,6 +2278,7 @@
         <!--Navigation Controller-->
         <scene sceneID="JdU-Cq-Mrj">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zRc-PC-KFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ee0-Rd-pK2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Qr_tab_icon" selectedImage="Qr_tab_icon" id="BgX-xP-SAe">
                         <color key="badgeColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2297,10 +2298,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Ruk-si-cpI" kind="relationship" relationship="rootViewController" id="sT4-y6-ium"/>
+                        <segue destination="E7v-PQ-icT" kind="relationship" relationship="rootViewController" id="yUo-3q-zZX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zRc-PC-KFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="464" y="-616"/>
         </scene>
@@ -2321,6 +2321,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwI-QX-7mb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-526" y="-1394"/>
+        </scene>
+        <!--扫描二维码-->
+        <scene sceneID="TIl-qZ-qjH">
+            <objects>
+                <viewController id="E7v-PQ-icT" customClass="ScannerViewController" customModule="didCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qUZ-WR-yi7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="q3o-DP-AbI"/>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="扫描二维码" leftItemsSupplementBackButton="YES" id="GsS-co-FjR">
+                        <barButtonItem key="rightBarButtonItem" title="相册" id="hQj-SE-epf">
+                            <color key="tintColor" red="0.96470588239999999" green="0.76470588240000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="ImportPhotoButton:" destination="E7v-PQ-icT" id="kIL-BK-QcQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfK-GA-Idn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1326" y="-616"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
