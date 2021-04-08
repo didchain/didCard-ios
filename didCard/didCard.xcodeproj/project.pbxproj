@@ -29,9 +29,9 @@
 		086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086DF7D625F1D8290068DC18 /* KeychainItemAccessibility.swift */; };
 		08862DAE261AB6EE00DB474E /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08862DAD261AB6EE00DB474E /* ScannerViewController.swift */; };
 		08862DB5261B2ED300DB474E /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08862DB4261B2ED300DB474E /* ToastManager.swift */; };
-		08862DB6261B5D9600DB474E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
-		08862DB7261B5D9600DB474E /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08CD672F260A1ADA00C60791 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CD672E260A1ADA00C60791 /* iosLib.framework */; };
+		08F576EE261E905800AD024F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
+		08F576EF261E905800AD024F /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
@@ -46,13 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		08862DB8261B5D9600DB474E /* Embed Frameworks */ = {
+		08F576F0261E905800AD024F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				08862DB7261B5D9600DB474E /* SwiftyJSON.framework in Embed Frameworks */,
+				08F576EF261E905800AD024F /* SwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,7 +109,7 @@
 				086DF7CB25F0BA0A0068DC18 /* LocalAuthentication.framework in Frameworks */,
 				086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */,
 				086DF7B325E8DAAF0068DC18 /* CoreLocation.framework in Frameworks */,
-				08862DB6261B5D9600DB474E /* SwiftyJSON.framework in Frameworks */,
+				08F576EE261E905800AD024F /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +235,7 @@
 				69711D6E25B7F47200B83E6C /* Frameworks */,
 				69711D6F25B7F47200B83E6C /* Resources */,
 				08CC9C4225E0AC6500E07589 /* Carthage Copy Frameworks */,
-				08862DB8261B5D9600DB474E /* Embed Frameworks */,
+				08F576F0261E905800AD024F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -497,7 +497,7 @@
 				CODE_SIGN_ENTITLEMENTS = didCard/didCard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -527,7 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

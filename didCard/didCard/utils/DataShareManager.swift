@@ -13,6 +13,9 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
     
     public static var sharedInstance = DataShareManager()
     
+    var locationManager:CLLocationManager!
+
+    
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DIDBase")
@@ -86,11 +89,18 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
     }
     
     func requestLocation() -> [String: Double] {
-        let locationManager = CLLocationManager()
+
+        self.locationManager = CLLocationManager()
         locationManager.delegate = self
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 100
+        
+        if CLLocationManager.authorizationStatus() == .denied {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
+        }
+
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
@@ -105,9 +115,8 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
         print("latitude && longitude \(data)")
     
         return data
+        
     }
     
 }
-extension NSManagedObject {
-    
-}
+

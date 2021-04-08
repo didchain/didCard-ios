@@ -33,40 +33,37 @@ class PersonalViewController: UIViewController {
                             actionText: "确定",
                             cancelText: "取消",
                             cancelHandler: nil) { (text: String?) in
-                if Wallet.UnlockAcc(auth: text ?? "") {
-                    if Wallet.DeriveAesKey(auth: text ?? "") {
-                        Setting.setWithoutAuth(true)
-                    }
+                if Wallet.UnlockAcc(auth: text ?? "") && Wallet.DeriveAesKey(auth: text ?? "") {
+                    Setting.setWithoutAuth(true)
                 }
             }
         } else {
             Setting.setWithoutAuth(false)
-//            sender.setOn(false, animated: true)
         }
     }
     
     @IBAction func FaceID(_ sender: UISwitch) {
         if sender.isOn {
-//            if Wallet.WInst.isLocked {
             showInputDialog(title: "验证密码",
                             message: Wallet.WInst.did!,
                             textPlaceholder: "请输入密码",
                             actionText: "确定",
                             cancelText: "取消",
                             cancelHandler: nil) { (text: String?) in
-                if Wallet.UnlockAcc(auth: text ?? "") {
-                    if !Wallet.DeriveAesKey(auth: text ?? "") {
-                        Setting.setUseFaceID(false)
-                        sender.setOn(false, animated: true)
-                        print("derive key faild")
-                        return
-                    }
-                } else {
+                if !(Wallet.UnlockAcc(auth: text ?? "") && Wallet.DeriveAesKey(auth: text ?? "")) {
+//                    if !Wallet.DeriveAesKey(auth: text ?? "") {
                     Setting.setUseFaceID(false)
                     sender.setOn(false, animated: true)
-                    print("解锁失败")
+                    print("derive key faild")
                     return
+//                    }
                 }
+//                else {
+//                    Setting.setUseFaceID(false)
+//                    sender.setOn(false, animated: true)
+//                    print("解锁失败")
+//                    return
+//                }
             }
 
             let context = LAContext()
@@ -81,7 +78,9 @@ class PersonalViewController: UIViewController {
                             let ac = UIAlertController(title: "验证失败", message: "请重试", preferredStyle: .alert)
                             ac.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
                             self?.present(ac, animated: true, completion: nil)
-                            print("\(String(describing: authError))")
+                            
+//                            print("\(String(describing: authError))")
+                            
                             Setting.setUseFaceID(false)
                             sender.setOn(false, animated: true)
                         }
@@ -94,9 +93,6 @@ class PersonalViewController: UIViewController {
                 Setting.setUseFaceID(false)
                 sender.setOn(false, animated: true)
             }
-//            } else {
-//                Setting.setUseFaceID(true)
-//            }
         } else {
             Setting.setUseFaceID(false)
         }

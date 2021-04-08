@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 import LocalAuthentication
+import CoreLocation
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var TintText: UILabel!
@@ -52,6 +53,16 @@ class HomeViewController: UIViewController {
             self.showCreateDialog()
             return
         }
+        
+//        if CLLocationManager.authorizationStatus() == .denied {
+            //        locationManager.requestWhenInUseAuthorization()
+            //        locationManager.requestAlwaysAuthorization()
+//            let locationAlert = UIAlertController(title: "没有定位权限", message: "请打开定位权限", preferredStyle: .alert)
+//
+//            let okAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+//            locationAlert.addAction(okAction)
+//            self.present(locationAlert, animated: true, completion: nil)
+//        }
         
         if Setting.getWithoutAuth() {
             if !Wallet.UnlockAcc(auth: nil) {

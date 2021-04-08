@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let rootVC = window?.rootViewController as? ViewController {
             rootVC.container = DataShareManager.sharedInstance.persistentContainer
         }
+
         
 //        Setting.init()
         //initial view controller

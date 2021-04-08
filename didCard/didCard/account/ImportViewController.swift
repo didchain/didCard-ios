@@ -72,14 +72,29 @@ class ImportViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    private func importAccountData(codeStr: String) {
+        let qrData: Data = ((codeStr).data(using: .utf8))!
+        let json = JSON(qrData)
+        if json["did"].exists() {
+            showInputDialog(title: "验证密码",
+                            message: json["did"].string!,
+                            textPlaceholder: "请输入密码",
+                            actionText: "确定",
+                            cancelText:  "取消",
+                            cancelHandler: nil) { (text: String?) in
+                if Wallet.ImportAcc(auth: text!, json: codeStr) == true {
+                    print("导入成功")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
 }
 
 extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-//        guard let qrcodeImg = info[.originalImage] as? UIImage else {
-//            return
-//        }
         if #available(iOS 13.0, *) {
             picker.navigationBar.barTintColor = .systemBackground
         }
@@ -97,29 +112,7 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             codeStr += feature.messageString!
         }
         
-        if codeStr == "" {
-            print("failed to phrase qrcode")
-            return
-        } else {
-            print(codeStr)
-            let codeObj:Data = codeStr.data(using: .utf8)!
-            let codeJson = JSON(codeObj)
-            
-            if codeJson["did"].exists() {
-                showInputDialog(title: "验证密码",
-                                message: codeJson["did"].string!,
-                                textPlaceholder: "请输入密码",
-                                actionText: "确定",
-                                cancelText:  "取消",
-                                cancelHandler: nil) { (text: String?) in
-                    if Wallet.ImportAcc(auth: text!, json: codeStr) == true {
-                        print("导入成功")
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
-            
-        }
+        importAccountData(codeStr: codeStr)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -140,27 +133,12 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            if metadataObj.stringValue != nil {
-                print(String(metadataObj.stringValue!))
-                let data: Data = ((metadataObj.stringValue!).data(using: .utf8))!
-                let json = JSON(data)
-                if json["did"].exists() {
-                    showInputDialog(title: "验证密码",
-                                    message: json["did"].string!,
-                                    textPlaceholder: "请输入密码",
-                                    actionText: "确定",
-                                    cancelText:  "取消",
-                                    cancelHandler: nil) { (text: String?) in
-                        if Wallet.ImportAcc(auth: text!, json: metadataObj.stringValue!) == true {
-                            print("导入成功")
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                    }
-                }
-
-            }
+            let metadataStr = metadataObj.stringValue!
+            importAccountData(codeStr: metadataStr)
         }
     }
+    
+    
 
 }
 

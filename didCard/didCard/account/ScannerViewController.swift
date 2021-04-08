@@ -59,7 +59,6 @@ class ScannerViewController: UIViewController {
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -73,6 +72,48 @@ class ScannerViewController: UIViewController {
         vc.delegate = self
         vc.allowsEditing = false
         present(vc, animated: true, completion: nil)
+    }
+    
+    private func loginScanner(qrData: Data) {
+        let json = JSON(qrData)
+        
+        if Wallet.WInst.isLocked {
+            showInputDialog(title: "解锁账号",
+                            message: Wallet.WInst.did!,
+                            textPlaceholder: "请输入密码",
+                            actionText: "确定",
+                            cancelText: "取消",
+                            cancelHandler: nil) { [self] (text: String?) in
+                if Wallet.UnlockAcc(auth: text ?? "") {
+                    login(json: json)
+                } else {
+                    let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+                    showAlert(title: "", message: "密码错误", okAction: action)
+                }
+
+            }
+        } else {
+            login(json: json)
+        }
+    }
+    
+    private func login(json: JSON) {
+        if json["random_token"].exists() && json["auth_url"].exists() {
+            let randToken = json["random_token"].string!
+            let authUrl = json["auth_url"].string!
+
+            let result:Bool = Utils.VerifyLogin(randToken, authUrl)
+
+            if result {
+                let action = UIAlertAction(title: "确定", style: .default) { (action) in
+                    self.tabBarController?.selectedIndex = 0
+                }
+                self.showAlert(title: "", message: "登陆成功", okAction: action)
+            } else {
+                let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+                self.showAlert(title: "", message: "登陆失败", okAction: action)
+            }
+        }
     }
 
 }
@@ -103,34 +144,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate, UIImage
         } else {
             print(codeStr)
             let codeObj:Data = codeStr.data(using: .utf8)!
-            let codeJson = JSON(codeObj)
-            
-            if Wallet.WInst.isLocked {
-                showInputDialog(title: "解锁账号",
-                                message: Wallet.WInst.did!,
-                                textPlaceholder: "请输入密码",
-                                actionText: "确定",
-                                cancelText: "取消",
-                                cancelHandler: nil) { (text: String?) in
-                    if Wallet.UnlockAcc(auth: text ?? "") {
-                    }
-                }
-                return
-            }
-            
-            if codeJson["random_token"].exists() && codeJson["auth_url"].exists() {
-                let randToken = codeJson["random_token"].string!
-                let authUrl = codeJson["auth_url"].string!
-                
-                let result:Bool = Utils.VerifyLogin(randToken, authUrl)
-
-                if result {
-                    showAlert(title: "", message: "登陆成功")
-
-                }
-
-            }
-            
+            loginScanner(qrData: codeObj)
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -155,37 +169,8 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate, UIImage
             if metadataObj.stringValue != nil {
                 print(String(metadataObj.stringValue!))
                 let data: Data = ((metadataObj.stringValue!).data(using: .utf8))!
-                let json = JSON(data)
-                
-                if Wallet.WInst.isLocked {
-                    showInputDialog(title: "解锁账号",
-                                    message: Wallet.WInst.did!,
-                                    textPlaceholder: "请输入密码",
-                                    actionText: "确定",
-                                    cancelText: "取消",
-                                    cancelHandler: nil) { (text: String?) in
-                        if Wallet.UnlockAcc(auth: text ?? "") {
-
-                        }
-                    }
-                    return
-
-                }
-                
-                                
-                if json["random_token"].exists() && json["auth_url"].exists() {
-                    let randToken = json["random_token"].string!
-                    let authUrl = json["auth_url"].string!
-
-                    let result:Bool = Utils.VerifyLogin(randToken, authUrl)
-
-                    if result {
-                        showAlert(title: "", message: "登陆成功")
-
-                    }
-
-                }
-                
+                loginScanner(qrData: data)
+                 
             }
         }
     }
@@ -193,10 +178,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate, UIImage
 }
 
 extension ScannerViewController {
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String, okAction: UIAlertAction){
         let successAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+//        let okAction = UIAlertAction(title: "确定", style: .default, handler: cancelHandler)
         successAlert.addAction(okAction)
         self.present(successAlert, animated: true, completion: nil)
     }

@@ -26,7 +26,7 @@ class Utils: NSObject {
         let sig = IosLibSign(signMsg)
         
         let url = URL(string: "http://39.99.198.143:60998/api/verify")
-        var request = URLRequest.init(url: url!)
+        var request = URLRequest(url: url!)
         request.httpMethod = "POST"
 
         let params:NSDictionary = ["content":[
@@ -36,27 +36,29 @@ class Utils: NSObject {
             ],
         "sig": sig
         ]
-        print("\(params)")
+        print("http body\(params)")
 
-        let paramData = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-        request.httpBody = paramData
+        let httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])
+        request.httpBody = httpBody
         
         var resCode:Bool = false
-        let postTask = URLSession.shared.dataTask(with: request) { (data, resp, err) in
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        URLSession.shared.dataTask(with: request) { (data, resp, err) in
             if (data != nil) && err == nil {
                 let jsonData = JSON(data!)
-                
+
                 print("data++++\(jsonData)")
+                
                 if jsonData["result_code"] == 0 {
                     resCode = true
-                } else {
-                    resCode = false
                 }
-            } else {
-                resCode = false
             }
-        }
-        postTask.resume()
+            semaphore.signal()
+        }.resume()
+        
+        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+        
         return resCode
     }
 }

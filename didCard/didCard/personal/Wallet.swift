@@ -55,7 +55,7 @@ class Wallet: NSObject {
         guard let jsonData = IosLibNewCard(auth) else {
             return false
         }
-//        print("jsonData is \(jsonData)")
+        
         populateWallet(data: jsonData)
         _ = UnlockAcc(auth: auth)
         let not = Notification.init(name: Notification.Name("ACCOUNT_CREATED"))
@@ -88,6 +88,7 @@ class Wallet: NSObject {
         let location = DataShareManager.sharedInstance.requestLocation()
         let lang: Double = location["latitude"] ?? 0
         let long: Double = location["longitude"] ?? 0
+        print("LOCATION=====>\(lang),\(long)")
         var jsonData: [String: String] = [:]
         jsonData["longitude"] = String(long)
         jsonData["latitude"] = String(lang)
@@ -95,9 +96,6 @@ class Wallet: NSObject {
         jsonData["did"] = self.WInst.did
 
         let signMsg = IosLibSignMessage(self.WInst.did, lang, long, time_stamp)
-
-//        let data = try? JSONSerialization.data(withJSONObject: jsonData, options: [])
-//        let jsonMsg: String? = String.init(data: data!, encoding: .utf8)
 
         if !IosLibLoadCard(WInst.walletJSON) {
             print("load card faild")
@@ -125,6 +123,7 @@ class Wallet: NSObject {
             
         }
         print("jsonMsg\(signMsg)")
+        
         let signReturnData = IosLibSign(signMsg)
         let signString = signReturnData
         jsonData["sig"] = signString
