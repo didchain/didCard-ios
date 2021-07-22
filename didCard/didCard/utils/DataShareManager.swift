@@ -36,7 +36,6 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
         let fetchRequest =
             NSFetchRequest<NSFetchRequestResult>(entityName: forEntityName)
         fetchRequest.fetchLimit = 1
-//        var result: NSManagedObject?
     
         do {
             let ret = try managedContext.fetch(fetchRequest)
@@ -52,6 +51,49 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
         }
         return nil
     }
+    
+    func findEntities(forEntityName:String, w: NSPredicate?) -> [NSManagedObject]? {
+        let managedContext = self.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: forEntityName)
+        if w != nil {
+            fetchRequest.predicate = w
+        }
+        do {
+            let ret = try managedContext.fetch(fetchRequest)
+            guard let result = ret as? [NSManagedObject] else {
+                return []
+            }
+            return result
+            
+        } catch let err as NSError {
+            print("Could not find.\(err). \(forEntityName)")
+        }
+        
+        return []
+    }
+    
+    public func findOneEntity(_ entityName: String, where w:NSPredicate) -> NSManagedObject? {
+        let context = self.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        
+        request.fetchLimit = 1
+        request.predicate = w
+
+        do {
+            let ret = try context.fetch(request)
+            guard let result = ret.last as? NSManagedObject else {
+                let entity = NSEntityDescription.entity(forEntityName: entityName, in: context)!
+                return NSManagedObject(entity: entity, insertInto: context)
+            }
+            return result
+        } catch let error as NSError {
+                print(error)
+        }
+        return nil
+    }
+    
+    
 
     // MARK: - Core Data Saving support
 
@@ -65,6 +107,11 @@ class DataShareManager: NSObject, CLLocationManagerDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func deleteContext(entity: NSManagedObject) {
+        let context = persistentContainer.viewContext
+        context.delete(entity)
     }
     
     func generateQRCode(from message: String) -> UIImage? {

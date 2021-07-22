@@ -10,7 +10,6 @@ import UIKit
 class AccountDetailViewController: UIViewController {
 
     @IBOutlet weak var QRCodeImageView: UIImageView!
-//    @IBOutlet weak var QRCodeView: UIView!
     @IBOutlet weak var Did: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +31,13 @@ class AccountDetailViewController: UIViewController {
             return
         }
         UIImageWriteToSavedPhotosAlbum(qrImg, nil, nil, nil)
+        
+        showToast(message: "保存成功")
     }
     
     @IBAction func CopyDid(_ sender: UIButton) {
         UIPasteboard.general.string = Wallet.WInst.did
+        
+        showToast(message: "复制成功")
     }
 }

@@ -16,4 +16,11 @@ class IdentityManagementViewController: UIViewController {
         self.navigationItem.backBarButtonItem = item
     }
 
+    @IBAction func SaveQrImg(_ sender: UIButton) {
+        let qrImg = Wallet.WInst.qrCodeImage!
+        
+        UIImageWriteToSavedPhotosAlbum(qrImg, nil, nil, nil)
+        
+        showToast(message: "保存成功")
+    }
 }

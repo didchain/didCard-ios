@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080577302623E1D6004C533B /* AuthorizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805772F2623E1D6004C533B /* AuthorizationTableViewCell.swift */; };
+		0805773626240C11004C533B /* AuthorizationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805773526240C11004C533B /* AuthorizationDetailViewController.swift */; };
+		0805773826242B8B004C533B /* AccessableListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805773726242B8B004C533B /* AccessableListController.swift */; };
+		0805773A26243468004C533B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805773926243468004C533B /* BaseTableViewCell.swift */; };
+		0805773E2626746D004C533B /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805773D2626746D004C533B /* Host.swift */; };
 		081ACEA525CA2FAC00C23B3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */; };
 		081ACEAE25CB818400C23B3C /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEAD25CB818400C23B3C /* QRCodeViewController.swift */; };
 		081ACEB125CB881700C23B3C /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEB025CB881700C23B3C /* PersonalViewController.swift */; };
@@ -14,6 +19,7 @@
 		081ACEB925CBE30A00C23B3C /* IdentityManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEB825CBE30A00C23B3C /* IdentityManagementViewController.swift */; };
 		081ACEC225D1151E00C23B3C /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEC125D1151E00C23B3C /* Wallet.swift */; };
 		081ACEC625D1157B00C23B3C /* DIDBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 081ACEC425D1157B00C23B3C /* DIDBase.xcdatamodeld */; };
+		081DB9C826A7F67E004165AA /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
 		0835E4EE25E5DA4E00149D68 /* DataShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0835E4ED25E5DA4E00149D68 /* DataShareManager.swift */; };
 		0835E4FE25E636F600149D68 /* CDWallet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0835E4FC25E636F600149D68 /* CDWallet+CoreDataClass.swift */; };
 		0835E4FF25E636F600149D68 /* CDWallet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0835E4FD25E636F600149D68 /* CDWallet+CoreDataProperties.swift */; };
@@ -30,8 +36,7 @@
 		08862DAE261AB6EE00DB474E /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08862DAD261AB6EE00DB474E /* ScannerViewController.swift */; };
 		08862DB5261B2ED300DB474E /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08862DB4261B2ED300DB474E /* ToastManager.swift */; };
 		08CD672F260A1ADA00C60791 /* iosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CD672E260A1ADA00C60791 /* iosLib.framework */; };
-		08F576EE261E905800AD024F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; };
-		08F576EF261E905800AD024F /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D1A86026234C6C007B08E5 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1A85F26234C6C007B08E5 /* AuthorizationViewController.swift */; };
 		69694E1325C9124600309185 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1225C9124600309185 /* NewAccountViewController.swift */; };
 		69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1625C9127400309185 /* CreateAccountViewController.swift */; };
 		69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69694E1925C912A200309185 /* BackUpViewController.swift */; };
@@ -45,21 +50,12 @@
 		69711D8D25B7F4C700B83E6C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 69711D8C25B7F4C700B83E6C /* Cartfile */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		08F576F0261E905800AD024F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				08F576EF261E905800AD024F /* SwiftyJSON.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		0805772F2623E1D6004C533B /* AuthorizationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTableViewCell.swift; sourceTree = "<group>"; };
+		0805773526240C11004C533B /* AuthorizationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationDetailViewController.swift; sourceTree = "<group>"; };
+		0805773726242B8B004C533B /* AccessableListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessableListController.swift; sourceTree = "<group>"; };
+		0805773926243468004C533B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		0805773D2626746D004C533B /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		081ACEA425CA2FAC00C23B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		081ACEAD25CB818400C23B3C /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		081ACEB025CB881700C23B3C /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +81,7 @@
 		08862DB4261B2ED300DB474E /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		08CC9C3E25E0A79B00E07589 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = didCard/Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		08CD672E260A1ADA00C60791 /* iosLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iosLib.framework; path = didCard/bin/iosLib.framework; sourceTree = "<group>"; };
+		08D1A85F26234C6C007B08E5 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		69694E1225C9124600309185 /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1625C9127400309185 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69694E1925C912A200309185 /* BackUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpViewController.swift; sourceTree = "<group>"; };
@@ -109,13 +106,22 @@
 				086DF7CB25F0BA0A0068DC18 /* LocalAuthentication.framework in Frameworks */,
 				086DF7CD25F0DA8F0068DC18 /* Security.framework in Frameworks */,
 				086DF7B325E8DAAF0068DC18 /* CoreLocation.framework in Frameworks */,
-				08F576EE261E905800AD024F /* SwiftyJSON.framework in Frameworks */,
+				081DB9C826A7F67E004165AA /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0805773C2626737D004C533B /* object */ = {
+			isa = PBXGroup;
+			children = (
+				081ACEC125D1151E00C23B3C /* Wallet.swift */,
+				0805773D2626746D004C533B /* Host.swift */,
+			);
+			path = object;
+			sourceTree = "<group>";
+		};
 		081ACE9D25CA2D2E00C23B3C /* home */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,11 +134,16 @@
 		081ACE9E25CA2D5600C23B3C /* personal */ = {
 			isa = PBXGroup;
 			children = (
+				0805773C2626737D004C533B /* object */,
 				081ACEB025CB881700C23B3C /* PersonalViewController.swift */,
 				081ACEB525CBE28300C23B3C /* CreateNewCardViewController.swift */,
 				081ACEB825CBE30A00C23B3C /* IdentityManagementViewController.swift */,
-				081ACEC125D1151E00C23B3C /* Wallet.swift */,
 				086DF7B025E8A4400068DC18 /* AccountDetailViewController.swift */,
+				08D1A85F26234C6C007B08E5 /* AuthorizationViewController.swift */,
+				0805772F2623E1D6004C533B /* AuthorizationTableViewCell.swift */,
+				0805773526240C11004C533B /* AuthorizationDetailViewController.swift */,
+				0805773726242B8B004C533B /* AccessableListController.swift */,
+				0805773926243468004C533B /* BaseTableViewCell.swift */,
 			);
 			path = personal;
 			sourceTree = "<group>";
@@ -235,7 +246,6 @@
 				69711D6E25B7F47200B83E6C /* Frameworks */,
 				69711D6F25B7F47200B83E6C /* Resources */,
 				08CC9C4225E0AC6500E07589 /* Carthage Copy Frameworks */,
-				08F576F0261E905800AD024F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,7 +332,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D1A86026234C6C007B08E5 /* AuthorizationViewController.swift in Sources */,
 				081ACEC625D1157B00C23B3C /* DIDBase.xcdatamodeld in Sources */,
+				080577302623E1D6004C533B /* AuthorizationTableViewCell.swift in Sources */,
+				0805773E2626746D004C533B /* Host.swift in Sources */,
 				086DF7C925EF8A110068DC18 /* CDSetting+CoreDataProperties.swift in Sources */,
 				081ACEC225D1151E00C23B3C /* Wallet.swift in Sources */,
 				69694E1D25C912BC00309185 /* ImportViewController.swift in Sources */,
@@ -330,6 +343,8 @@
 				086DF7D725F1D8290068DC18 /* KeychainItemAccessibility.swift in Sources */,
 				086DF7BD25EF75610068DC18 /* Setting.swift in Sources */,
 				69694E1725C9127400309185 /* CreateAccountViewController.swift in Sources */,
+				0805773626240C11004C533B /* AuthorizationDetailViewController.swift in Sources */,
+				0805773826242B8B004C533B /* AccessableListController.swift in Sources */,
 				69711D7925B7F47200B83E6C /* ViewController.swift in Sources */,
 				69694E1A25C912A200309185 /* BackUpViewController.swift in Sources */,
 				081ACEAE25CB818400C23B3C /* QRCodeViewController.swift in Sources */,
@@ -338,6 +353,7 @@
 				08862DAE261AB6EE00DB474E /* ScannerViewController.swift in Sources */,
 				0835E4EE25E5DA4E00149D68 /* DataShareManager.swift in Sources */,
 				08862DB5261B2ED300DB474E /* ToastManager.swift in Sources */,
+				0805773A26243468004C533B /* BaseTableViewCell.swift in Sources */,
 				081ACEA525CA2FAC00C23B3C /* HomeViewController.swift in Sources */,
 				086DF7C825EF8A110068DC18 /* CDSetting+CoreDataClass.swift in Sources */,
 				0835E4FF25E636F600149D68 /* CDWallet+CoreDataProperties.swift in Sources */,
@@ -497,7 +513,7 @@
 				CODE_SIGN_ENTITLEMENTS = didCard/didCard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -513,9 +529,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.didchain.didCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev_did_card;
+				PROVISIONING_PROFILE_SPECIFIER = dev_didcard;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
@@ -525,9 +541,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 2XYK8RBB6M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -542,9 +558,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.didchain.didCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = release_did_chain_card;
+				PROVISIONING_PROFILE_SPECIFIER = release_didcard;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;

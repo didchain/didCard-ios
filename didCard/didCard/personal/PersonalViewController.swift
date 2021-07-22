@@ -51,19 +51,11 @@ class PersonalViewController: UIViewController {
                             cancelText: "取消",
                             cancelHandler: nil) { (text: String?) in
                 if !(Wallet.UnlockAcc(auth: text ?? "") && Wallet.DeriveAesKey(auth: text ?? "")) {
-//                    if !Wallet.DeriveAesKey(auth: text ?? "") {
                     Setting.setUseFaceID(false)
                     sender.setOn(false, animated: true)
                     print("derive key faild")
                     return
-//                    }
                 }
-//                else {
-//                    Setting.setUseFaceID(false)
-//                    sender.setOn(false, animated: true)
-//                    print("解锁失败")
-//                    return
-//                }
             }
 
             let context = LAContext()
@@ -78,9 +70,6 @@ class PersonalViewController: UIViewController {
                             let ac = UIAlertController(title: "验证失败", message: "请重试", preferredStyle: .alert)
                             ac.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
                             self?.present(ac, animated: true, completion: nil)
-                            
-//                            print("\(String(describing: authError))")
-                            
                             Setting.setUseFaceID(false)
                             sender.setOn(false, animated: true)
                         }

@@ -10,6 +10,9 @@ import LocalAuthentication
 import CoreLocation
 
 class HomeViewController: UIViewController {
+    
+    let url:URL? = URL(string: "https://www.ahzwfw.gov.cn/")
+    
     @IBOutlet weak var TintText: UILabel!
     @IBOutlet weak var ContentView: UIView!
     @IBOutlet weak var HomeBackground: UIView!
@@ -82,7 +85,6 @@ class HomeViewController: UIViewController {
     
     @objc func setDidName(_ notification: Notification?){
         DispatchQueue.main.async {
-//            NSLog("======>\(Wallet.WInst.walletJSON ?? "-----")")
             self.DidString.text = Wallet.WInst.did
             if Wallet.WInst.isLocked == false {
                 self.reloadWalletData()
@@ -99,6 +101,27 @@ class HomeViewController: UIViewController {
         self.ClickToUnlock.isHidden = true
         self.TintText.text = "💫点击二维码刷新"
     }
+    
+    @IBAction func AnnounceBtn(_ sender: UIButton) {
+        
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
+    
+    @IBAction func HospitalServiceBtn(_ sender: Any) {
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func HotelServiceBtn(_ sender: Any) {
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func CopyDid(_ sender: UIButton) {
+        UIPasteboard.general.string = Wallet.WInst.did
+        
+        showToast(message: "复制成功")
+    }
+    
     
     @IBAction func UnlockQRCodeBtn(_ sender: UIButton) {
         if Wallet.WInst.isLocked == true {
@@ -162,9 +185,9 @@ class HomeViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPasswordSIG"{
-            let vc = segue.destination as! QRCodeViewController
+            let vc = segue.destination as? QRCodeViewController
             
-            vc.delegate = {
+            vc!.delegate = {
                 DispatchQueue.main.async {
                     self.reloadWalletData()
                 }

@@ -101,9 +101,7 @@ class Wallet: NSObject {
             print("load card faild")
             return false
         }
-        if IosLibIsOpen() {
-            print("wallet is open")
-        } else {
+        if !IosLibIsOpen() {
             if auth == nil {
                 if let AesKey = KeychainWrapper.standard.string(forKey: "AESKey") {
                     if IosLibOpenWithAesKey(AesKey) != "" {
@@ -144,8 +142,8 @@ class Wallet: NSObject {
         let img: UIImage = DataShareManager.sharedInstance.generateQRCode(from: jsonString)!
         self.qrCodeImage = img
         self.isLocked = false
-        print("init by json \(String(describing: self.did))")
-        print("init by json \(String(describing: self.walletJSON))")
+//        print("init by json \(String(describing: self.did))")
+//        print("init by json \(String(describing: self.walletJSON))")
     }
     
     private static func populateWallet(data: Data) {

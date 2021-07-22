@@ -101,18 +101,27 @@ class ScannerViewController: UIViewController {
         if json["random_token"].exists() && json["auth_url"].exists() {
             let randToken = json["random_token"].string!
             let authUrl = json["auth_url"].string!
-
-            let result:Bool = Utils.VerifyLogin(randToken, authUrl)
-
-            if result {
-                let action = UIAlertAction(title: "确定", style: .default) { (action) in
-                    self.tabBarController?.selectedIndex = 0
-                }
-                self.showAlert(title: "", message: "登陆成功", okAction: action)
-            } else {
-                let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-                self.showAlert(title: "", message: "登陆失败", okAction: action)
+            
+            guard let existAccount: CDAccounts = Host.isExist(website: authUrl) else {
+                return
             }
+            
+            if let existUsername = (existAccount.account),
+               let existPassword = (existAccount.password) {
+                let result:Bool = Utils.VerifyLogin(randToken, authUrl, username: existUsername, password: existPassword)
+
+                if result {
+                    let action = UIAlertAction(title: "确定", style: .default) { (action) in
+                        self.tabBarController?.selectedIndex = 0
+                    }
+                    self.showAlert(title: "", message: "登陆成功", okAction: action)
+                } else {
+                    let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+                    self.showAlert(title: "", message: "登陆失败", okAction: action)
+                }
+            }
+
+            
         }
     }
 
@@ -125,16 +134,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate, UIImage
             picker.navigationBar.barTintColor = .systemBackground
         }
         picker.dismiss(animated: true, completion: nil)
-        let qrcodeImg = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as! UIImage
+        let qrcodeImg = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage
         
         
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
-        let ciImage = CIImage(image: qrcodeImg)!
+        let ciImage = CIImage(image: qrcodeImg!)!
         
-        let features = detector.features(in: ciImage)
+        let features = detector.features(in: ciImage) as? [CIQRCodeFeature]
         var codeStr = ""
         
-        for feature in features as! [CIQRCodeFeature] {
+        for feature in features! {
             codeStr += feature.messageString!
         }
         
@@ -160,7 +169,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate, UIImage
             return
         }
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        let metadataObj = (metadataObjects[0] as? AVMetadataMachineReadableCodeObject)!
         
         if supportedCodeTypes.contains(metadataObj.type) {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)

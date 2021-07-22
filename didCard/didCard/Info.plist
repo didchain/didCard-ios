@@ -20,22 +20,27 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>是否允许此App使用你的相机？</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>是否允许此App使用你的FaceID?</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>是否永久允许此App获取你的位置信息？</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>是否允许此App获取你的位置信息？</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>您的相机将被用于二维码扫码</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>将用于面容解锁</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>需要您的位置信息来生成二维码</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>需要您的位置信息来生成二维码</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>是否允许此App添加图片到你的媒体资料库？</string>
+	<string>需要将账号二维码存入您的相册中</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>是否允许此App访问你的媒体资料库？</string>
+	<string>需要将您相册中的二维码导入APP中</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -57,5 +62,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

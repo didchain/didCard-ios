@@ -99,16 +99,16 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             picker.navigationBar.barTintColor = .systemBackground
         }
         picker.dismiss(animated: true, completion: nil)
-        let qrcodeImg = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as! UIImage
+        let qrcodeImg = (info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage)!
         
         
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
         let ciImage = CIImage(image: qrcodeImg)!
         
-        let features = detector.features(in: ciImage)
+        let features = detector.features(in: ciImage) as? [CIQRCodeFeature]
         var codeStr = ""
         
-        for feature in features as! [CIQRCodeFeature] {
+        for feature in features! {
             codeStr += feature.messageString!
         }
         
@@ -127,7 +127,7 @@ extension ImportViewController: AVCaptureMetadataOutputObjectsDelegate, UIImageP
             return
         }
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        let metadataObj = (metadataObjects[0] as? AVMetadataMachineReadableCodeObject)!
         
         if supportedCodeTypes.contains(metadataObj.type) {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
